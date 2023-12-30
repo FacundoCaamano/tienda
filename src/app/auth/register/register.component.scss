@@ -1,0 +1,36 @@
+.formRegisterContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--color3);
+}
+
+.labelFormRegister{
+    font-size: 1.1rem;
+    color: var(--color4);
+}
+
+.inputFormRegister{
+    background-color: var(--color1);
+    font-size: 1.05rem;
+}
+.btnFormRegister{
+    background-color: var(--color4);
+    border-radius: 5px;
+    padding: 15px;
+    height: 60px;
+    margin: 10px; 
+    color: var(--color1); 
+    font-weight: 400;
+    transition: ease 0.2s all; 
+}
+
+.btnFormRegister:hover{
+    transform: scale(1.1);
+}
+.btnFormLogin{
+    background-color: var(--color5);
+    border-color: var(--color5);
+    color: var(--color4);
+}
