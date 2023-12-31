@@ -1,16 +1,27 @@
+
 <div class="login-container">
-    <form [formGroup]="formLogin" (ngSubmit)="login()">
-      <div class="mb-3">
-        <label class="form-label labelLogin" for="">Email</label>
-        <input formControlName="email" class="form-control inputLogin" type="email" name="email" [ngClass]="{ 'invalid': formLogin.get('email')?.invalid && formLogin.get('email')?.touched }">
-      </div>
-      <div class="mb-3">
-        <label class="form-label labelLogin" for="">Contraseña</label>
-        <input formControlName="password" class="form-control inputLogin" type="password" name="password" [ngClass]="{ 'invalid': formLogin.get('password')?.invalid && formLogin.get('password')?.touched }">
-      </div>
-      <div class="mb-3">
-        <button type="submit" class="btnForm">Ingresar</button>
-        <button class="btnForm btnFormRegister" [routerLink]="['/auth/register']">Crear una cuenta</button>
-      </div>
+    <form  [formGroup]="formLogin">
+        <div class="mb-3">
+            <label  class="form-label labelLogin" for="">Email</label>
+            <input formControlName="email" class="form-control inputLogin"  type="email" name="email" 
+            >
+            <div *ngIf="controlEmail.invalid && controlEmail.touched">
+                <p class="text-danger">El email es obligatorio y debe contener un @</p>
+            </div>  
+        </div>
+        <div class="mb-3">
+            <label  class="form-label labelLogin" for="">Contraseña</label>
+            <input  formControlName="password" class="form-control inputLogin"  type="password" name="password">
+            <div *ngIf="controlPassword.invalid && controlPassword.touched">
+                <p class="text-danger">Campo requerido</p>
+            </div>
+        </div>
+        <div class="mb-3">
+            <button (click)="login()" class="btnForm">Ingresar</button>
+            <button class="btnForm btnFormRegister" [routerLink]="['/auth/register']">  Crear una cuenta</button>
+        </div>
+        <div>
+            <p class="text-danger">{{errorMesages$ | async}}</p>
+        </div>
     </form>
-  </div>
+</div>
