@@ -13,8 +13,13 @@
 .container--content {
     flex-grow: 1;
     background: var(--color3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
+.content{
+    width: 50vw;
+}
 .container-footer {
     height: 100px;
     background: var(--color4);

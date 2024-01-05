@@ -1,1 +1,30 @@
-<p>profile works!</p>
+<pre>
+    {{user | async | json}}
+</pre>
+<div class="profile-container">
+    <div class="card" style="width: 18rem;">
+        <img src="./assets/imgs/usuario.png" class="card-img-top w-50 mx-auto my-3" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{user}}</h5>
+            <p class="card-text">usuario.email usuario.rol </p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-success">
+                Carrito
+                <img class="icon-list" src="./assets/icons/carrito-de-compras.png" alt="">
+            </li>
+            <li class="list-group-item list-group-item-success">
+                Compras
+                <img class="icon-list" src="./assets/icons/lista-de-la-compra.png" alt="">
+            </li>
+            <li class="list-group-item list-group-item-success">
+                Editar
+                <img class="icon-list" src="./assets/icons/engranaje.png" alt="">
+            </li>
+        </ul>
+        <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+    </div>
+</div> 

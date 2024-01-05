@@ -1,0 +1,38 @@
+.profile-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card{
+    background-color: var(--color3);
+    // bloor
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    &-link{
+        background-color: var(--color2);
+        border: 1px solid;
+        border-radius: 10px;
+        padding: 10px;
+        text-decoration: none;
+        color: var(--color4);
+    }
+}
+.list-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.list-group-item{
+    margin: 10px 0px;
+    border-radius: 10px;
+    transition: ease all 0.2s;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+.list-group-item:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.icon-list{
+    width: 30px;
+}

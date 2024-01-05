@@ -1,23 +1,35 @@
 <div class="formRegisterContainer">
-    <form class="formRegister">
+    <form class="formRegister"  (submit)="register()" [formGroup]="formRegister">
         <div class="mb-3">
-            <label  class="form-label labelFormRegister" for="">Nombre</label>
-            <input  class="form-control inputFormRegister" type="text">
+            <label  class="form-label labelFormRegister" for="" >Nombre</label>
+            <input formControlName="name" class="form-control inputFormRegister" type="text">
+            <p class="text-danger" *ngIf="controlName.invalid && controlName.touched">
+                name requerido
+            </p>
         </div>
         <div class="mb-3">
             <label  class="form-label labelFormRegister" for="">Apellido</label>
-            <input  class="form-control inputFormRegister" type="text">
+            <input  formControlName="surname" class="form-control inputFormRegister" type="text">
+            <p class="text-danger" *ngIf="controlSurname.invalid && controlSurname.touched">
+                surname requerido
+            </p>
         </div>
         <div class="mb-3">
             <label  class="form-label labelFormRegister" for="">email</label>
-            <input  class="form-control inputFormRegister" type="email">
+            <input  formControlName="email" class="form-control inputFormRegister" type="email">
+            <p class="text-danger" *ngIf="controlEmail.invalid && controlEmail.touched">
+                email invalido
+            </p>
         </div>
         <div class="mb-3">
             <label  class="form-label"  for="">Contraseña</label>
-            <input  class="form-control inputFormRegister" type="password">
+            <input  formControlName="password" class="form-control inputFormRegister" type="password">
+            <p class="text-danger" *ngIf="controlPassword.invalid && controlPassword.touched">
+                Contraseña invalida
+            </p>
         </div>
         <div class="mb-3">
-            <button class="btnFormRegister">Registrarse</button>
+            <button type="submit" class="btnFormRegister">Registrarse</button>
             <button class="btnFormRegister btnFormLogin" [routerLink]="['/auth/login']">Ya tengo una cuenta</button>
         </div>
     </form>
