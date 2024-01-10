@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { user } from 'src/app/auth/models';
 import { AuthService } from 'src/app/auth/service/auth.service';
 //asi se importa imagen desde assets
@@ -10,13 +10,11 @@ import { AuthService } from 'src/app/auth/service/auth.service';
   styleUrls: ['./profile.component.scss']
 })
 
-export class ProfileComponent {
+export class ProfileComponent{
 
-  public user:Observable<user | null>
-
+  public user: Observable<user | null>
+ 
   constructor(private authService:AuthService) {
-    
-  this.user = this.authService.user$
-    
+    this.user = this.authService.user$
   }
 }

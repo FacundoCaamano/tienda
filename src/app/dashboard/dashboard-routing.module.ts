@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './dashboard/pages/home/home.component';
 import { ProductsComponent } from './dashboard/pages/products/products.component';
 import { ProfileComponent } from './dashboard/pages/profile/profile.component';
+import { authGuard } from '../core/guards/auth.guard';
 
 
 
@@ -20,6 +21,7 @@ import { ProfileComponent } from './dashboard/pages/profile/profile.component';
       },
       {
         path: 'profile',
+        canActivate: [authGuard],
         component: ProfileComponent
       }
     ]

@@ -1,12 +1,12 @@
 <pre>
-    {{user | async | json}}
+    {{ (user | async) | json }}
 </pre>
-<div class="profile-container">
+<div class="profile-container" *ngIf="user | async as user">
     <div class="card" style="width: 18rem;">
         <img src="./assets/imgs/usuario.png" class="card-img-top w-50 mx-auto my-3" alt="...">
         <div class="card-body">
-            <h5 class="card-title">{{user}}</h5>
-            <p class="card-text">usuario.email usuario.rol </p>
+            <h5 class="card-title">{{user.name}} {{user.surname}}</h5>
+            <p class="card-text">{{user.email}}  </p>
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item list-group-item-success">

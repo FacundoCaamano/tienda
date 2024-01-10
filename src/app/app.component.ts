@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'carrito-pro';
   constructor(private authService:AuthService){
     this.authService.checkSession()
-
+    
   }
 }
