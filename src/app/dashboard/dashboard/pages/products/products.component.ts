@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/auth/service/auth.service';
+import { Products } from './models';
+import { ProductsService } from './service/products.service';
 
 @Component({
   selector: 'app-products',
@@ -7,8 +10,9 @@ import { AuthService } from 'src/app/auth/service/auth.service';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
-  user:any
-  constructor(private authService:AuthService) {
-    
+  products$: Observable<Products[] | null>
+  constructor(private productService:ProductsService) {
+    this.productService.loadProducts()
+    this.products$ = productService.getProducts()
   }
 }
