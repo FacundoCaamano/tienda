@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { AuthRes, user } from '../models';
+import { AuthRes, user, userData } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class AuthService {
 
   private _errorMessages$ = new BehaviorSubject<string>('')
   public errorMessages$ = this._errorMessages$.asObservable()
-  public _user$ = new BehaviorSubject<user | null>(null)
+  public _user$ = new BehaviorSubject<userData | null>(null)
   public user$ = this._user$.asObservable()
   constructor(private http: HttpClient, private router: Router) {
 
@@ -61,9 +61,7 @@ export class AuthService {
     this.router.navigate(['/auth/login']); 
   }
 
-
-  getUserById(id: string) {
-    return this.http.get(this.URL + '/users/' + id)
-  }
+ 
+  
 
 }

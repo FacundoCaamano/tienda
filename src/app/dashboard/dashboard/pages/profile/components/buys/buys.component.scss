@@ -1,0 +1,17 @@
+.buys-container{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+.list-group{
+    width: 50%;
+    min-height: 50vh;
+    border-top:var(--color2) 10px solid ;
+    border-bottom:var(--color2) 10px solid ;
+    background-color: rgb(226, 226, 226);
+    box-shadow: 20px 16px 10px 1px rgb(90, 90, 90) ;
+    display: flex;
+    list-style: none;
+    padding: 20px;
+    justify-content: space-around;
+}

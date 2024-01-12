@@ -5,6 +5,13 @@ export interface user{
     password:string,
 }
 
+export interface userData  {
+    id:string,
+    name:string,
+    surname:string,
+    email:string,
+}
+
 export interface AuthRes {
     message:string,
     user:user
