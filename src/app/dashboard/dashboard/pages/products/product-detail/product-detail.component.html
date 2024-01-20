@@ -1,0 +1,32 @@
+<button class="btn btn-secondary" routerLink="../../">
+    volver
+</button>
+
+<div class="product-detail-container">
+    <h3>{{(product | async)?.title}}</h3>
+    <div class="productContainer">
+        <div class="img-container">
+            <img *ngFor="let img of (product | async)?.thumbnail" (click)="showImage(img)"
+            [ngClass]="{selected: selectedImage === img}" [src]="img" alt="img" />
+        </div>
+        <div class="thumbnailss">
+            <img src={{selectedImage}} alt="">
+        </div>
+        <div class="container-detail">
+            <div class="container-detail--title">
+                <h4>detalle</h4>
+            </div>
+            <div class="container-detail--info">
+                <p>
+                    description: {{(product | async)?.description}}
+                </p>
+                <p>
+                    stock: {{(product | async)?.stock}}
+                </p>
+                <p>
+                    price: {{(product | async)?.price | currency}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

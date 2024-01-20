@@ -14,5 +14,7 @@ export class ProductsComponent {
   constructor(private productService:ProductsService) {
     this.productService.loadProducts()
     this.products$ = productService.getProducts()
+    console.log(this.products$);
+    
   }
 }

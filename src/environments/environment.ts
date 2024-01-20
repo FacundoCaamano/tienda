@@ -1,4 +1,3 @@
 export const environment = {
-    production: false,
-    url: 'http://localhost:3000/carrito-pro/',
+    api: 'http://localhost:3000/carrito-pro'
 };

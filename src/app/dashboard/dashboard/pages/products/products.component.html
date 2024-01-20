@@ -1,10 +1,10 @@
-<div *ngFor="let product of products$ | async" class="card mb-3" style="max-width: 540px;">
+<div *ngFor="let product of products$ | async" class="card mb-3  card-product">
     <div class="row g-0">
-      <div class="col-md-4">
+      <div class="col-md-4 " routerLink="detail/{{product._id}}">
         <img src="{{product.thumbnail}}" class="img-fluid rounded-start" alt="imgProduct">
       </div>
-      <div class="col-md-8">
-        <div class="card-body">
+      <div class="col-md-8 ">
+        <div class="card-bod ">
           <h5 class="card-title">{{product.title}}</h5>
           <p class="card-text">{{product.description}}</p>
           <p class="card-text"><small class="text-body-secondary">Stock: {{product.stock}} unidades</small></p>

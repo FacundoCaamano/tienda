@@ -1,17 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { user } from 'src/app/auth/models';
+import { user, userData } from 'src/app/auth/models';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private url = 'http://localhost:3000/carrito-pro'
-
-  private _user$ = new BehaviorSubject<user | null>(null)
-  private user$ = this._user$.asObservable()
+  private url = environment.api
 
   private _buys$ = new BehaviorSubject([])
   private buys$ = this._buys$.asObservable()
@@ -34,5 +32,6 @@ export class UserService {
   getBuys(){
     return this._buys$
   }
-  
+
+ 
 }

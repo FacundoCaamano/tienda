@@ -1,14 +1,17 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { AuthRes, user, userData } from '../models';
+import { user, userData } from '../models';
+import { environment } from 'src/environments/environment';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private URL = 'http://localhost:3000/carrito-pro'
+  public URL = environment.api
 
   private _errorMessages$ = new BehaviorSubject<string>('')
   public errorMessages$ = this._errorMessages$.asObservable()
@@ -62,6 +65,32 @@ export class AuthService {
   }
 
  
+   editUser(id: string, data: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')!
+      })
+    };
   
+    this.http.put(this.URL + '/users/edituser/' + id, data, httpOptions).subscribe({
+      next: () => {
+        // Actualizar el observable _user$ con los nuevos datos
+        const updatedUser: userData = {
+          id: id,
+          name: data.name,
+          surname: data.surname,
+          email: data.email,
+          role: data.role,
+          cart: data.cart
+        };
+        this._user$.next(updatedUser);
+      },
+      error: (error: any) => {
+        // Manejar cualquier error
+        console.error(error);
+      }
+    });
+
+  }
 
 }

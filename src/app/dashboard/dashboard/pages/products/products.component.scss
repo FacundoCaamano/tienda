@@ -1,0 +1,8 @@
+.card-product{
+    transition: ease all 0.2s;
+}
+.card-product:hover{
+    cursor: pointer; 
+    transform: scale(1.01);
+}
+
