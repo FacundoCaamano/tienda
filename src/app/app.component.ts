@@ -19,6 +19,6 @@ export class AppComponent {
         }
       }
     )
-    this.cartService.loadCart(this.id)
+    this.cartService.loadCart(this.id)    
   }
 }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, filter } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Cart } from '../model';
 
@@ -13,6 +13,9 @@ export class CartService {
   private _cart$ = new BehaviorSubject<Cart>({} as Cart)
   public cart$ = this._cart$.asObservable()
 
+  private _productsInCart$ = new BehaviorSubject<number>(0)
+  public  productsInCart$ = this._productsInCart$.asObservable()
+
   constructor(private http:HttpClient) { }
 
   loadCart(id:string){
@@ -24,6 +27,7 @@ export class CartService {
     this.http.get<Cart>(this.url + '/carts/' + id ).subscribe({
       next:(data)=>{
         this._cart$.next(data)
+        this._productsInCart$.next(data.products.length)
       }
     })
   }
@@ -31,4 +35,15 @@ export class CartService {
   getCart(){
     return this.cart$
   }
+
+  addProductToCart(productId:string, cartId:string){
+    this.http.post(this.url + '/carts/' + cartId + '/product/' + productId ,{}).subscribe({
+      next:(data)=>{
+        this.loadCart(cartId)
+      }
+    })
+    console.log('desde el servicio', productId, cartId);
+    
+  }
+ 
 }

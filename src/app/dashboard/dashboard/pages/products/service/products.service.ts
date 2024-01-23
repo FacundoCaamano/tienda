@@ -39,4 +39,7 @@ export class ProductsService {
     }
     return this.http.get<Products>(this.url + '/products/' + id , httpOptions)
    }
+
+ 
+   
 }

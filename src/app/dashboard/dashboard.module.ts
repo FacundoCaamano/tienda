@@ -13,6 +13,7 @@ import { EditComponent } from './dashboard/pages/profile/components/edit/edit.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailComponent } from './dashboard/pages/products/product-detail/product-detail.component';
 import { CartComponent } from './dashboard/pages/cart/cart.component';
+import { CartBadgeComponent } from './dashboard/components/cart-badge/cart-badge.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { CartComponent } from './dashboard/pages/cart/cart.component';
     BuysComponent,
     EditComponent,
     ProductDetailComponent,
-    CartComponent
+    CartComponent,
+    CartBadgeComponent
   ],
   imports: [
     CommonModule,

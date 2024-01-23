@@ -26,6 +26,9 @@
                 <p>
                     price: {{(product | async)?.price | currency}}
                 </p>
+                <div>
+                    <button class="btn-agregar" (click)="addToCart(productId)">agregar al carrito</button>
+                </div>
             </div>
         </div>
     </div>
