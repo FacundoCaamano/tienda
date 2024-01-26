@@ -45,5 +45,13 @@ export class CartService {
     console.log('desde el servicio', productId, cartId);
     
   }
+
+  deleteProductFromCart( cartId:string,productId:string){
+    this.http.delete(this.url + '/carts/' + cartId + '/product/' + productId).subscribe({
+      next:(data)=>{
+        this.loadCart(cartId)
+      }
+    })
+  }
  
 }
