@@ -36,8 +36,8 @@ export class CartService {
     return this.cart$
   }
 
-  addProductToCart(productId:string, cartId:string){
-    this.http.post(this.url + '/carts/' + cartId + '/product/' + productId ,{}).subscribe({
+  addProductToCart(productId:string, cartId:string, quantity:number){
+    this.http.post(this.url + '/carts/' + cartId + '/product/' + productId , {quantity}).subscribe({
       next:(data)=>{
         this.loadCart(cartId)
       }

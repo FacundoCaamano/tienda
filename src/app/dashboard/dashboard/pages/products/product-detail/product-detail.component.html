@@ -27,6 +27,9 @@
                     price: {{(product | async)?.price | currency}}
                 </p>
                 <div>
+                    <input [readOnly]="true" type="number" value={{quantity}}>
+                    <button class="btn-agregar" (click)="increaseQuantity()">+</button>
+                    <button class="btn-agregar" (click)="decreaseQuantity()">-</button>
                     <button class="btn-agregar" (click)="addToCart(productId)">agregar al carrito</button>
                 </div>
             </div>

@@ -19,6 +19,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   cart:any
 
+  quantity:number = 1
+
   private suscription!: Subscription
 
   constructor(
@@ -51,6 +53,13 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   addToCart(productId:string){
-    this.cartService.addProductToCart(productId, this.cart)
+    this.cartService.addProductToCart(productId, this.cart, this.quantity)
+  }
+
+  increaseQuantity(){
+    this.quantity ++
+  }
+  decreaseQuantity(){
+    this.quantity --
   }
 }

@@ -22,6 +22,7 @@ export class CartComponent implements OnDestroy {
     this.subscription.unsubscribe()
   }
   deleteProduct(productId:string){
+    
     this.cartService.deleteProductFromCart( this.cartId,productId)
   }
 }
