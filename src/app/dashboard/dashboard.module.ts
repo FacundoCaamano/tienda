@@ -10,7 +10,7 @@ import { ProductsComponent } from './dashboard/pages/products/products.component
 import { ProfileComponent } from './dashboard/pages/profile/profile.component';
 import { BuysComponent } from './dashboard/pages/profile/components/buys/buys.component';
 import { EditComponent } from './dashboard/pages/profile/components/edit/edit.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailComponent } from './dashboard/pages/products/product-detail/product-detail.component';
 import { CartComponent } from './dashboard/pages/cart/cart.component';
 import { CartBadgeComponent } from './dashboard/components/cart-badge/cart-badge.component';
@@ -33,7 +33,8 @@ import { CartBadgeComponent } from './dashboard/components/cart-badge/cart-badge
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class DashboardModule { }

@@ -1,15 +1,35 @@
-<div *ngFor="let product of products$ | async" class="card mb-3  card-product">
-    <div class="row g-0">
-      <div class="col-md-4 " routerLink="detail/{{product._id}}">
-        <img src="{{product.thumbnail}}" class="img-fluid rounded-start" alt="imgProduct">
-      </div>
-      <div class="col-md-8 ">
-        <div class="card-bod ">
-          <h5 class="card-title">{{product.title}}</h5>
-          <p class="card-text">{{product.description}}</p>
-          <p class="card-text"><small class="text-body-secondary">Stock: {{product.stock}} unidades</small></p>
+<div class="containerProducts">
+
+  <div>
+    <p>filtrar</p>
+    <ul>
+      <li (click)="mayorPrecio()">mayor precio</li>
+      <li (click)="menorPrecio()">menor precio</li>
+      <li>limite</li>
+      <!-- filtrar por precio -->
+      <input [(ngModel)]="priceInput" 
+      type="number" 
+      class="form-control" 
+      >
+      <button type="button" (click)="filterByPrice()" > filtrar</button>
+    </ul>
+  </div>
+  <div>
+    <div *ngFor="let product of products$ | async" class="card mb-3  card-product">
+      <div class="row g-0">
+        <div class="col-md-4 " routerLink="detail/{{product._id}}">
+          <img src="{{product.thumbnail}}" class="img-fluid rounded-start" alt="imgProduct">
+        </div>
+        <div class="col-md-8 ">
+          <div class="card-bod ">
+            <h5 class="card-title">{{product.title}}</h5>
+            <p class="card-text">{{product.description}}</p>
+            <p class="card-text"><small class="text-body-secondary">Stock: {{product.stock}} unidades</small></p>
           <p class="card-text"><small class="text-body-secondary"> {{product.price | currency}}</small></p>
         </div>
       </div>
     </div>
   </div>
+  
+</div>
+</div>
