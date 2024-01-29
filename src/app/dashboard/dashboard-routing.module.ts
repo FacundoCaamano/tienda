@@ -9,6 +9,7 @@ import { BuysComponent } from './dashboard/pages/profile/components/buys/buys.co
 import { EditComponent } from './dashboard/pages/profile/components/edit/edit.component';
 import { ProductDetailComponent } from './dashboard/pages/products/product-detail/product-detail.component';
 import { CartComponent } from './dashboard/pages/cart/cart.component';
+import { BuyComponent } from './dashboard/pages/buy/buy.component';
 
 
 
@@ -40,6 +41,10 @@ import { CartComponent } from './dashboard/pages/cart/cart.component';
       {
         path: 'profile/cart',
         component: CartComponent
+      },
+      {
+        path: 'buy',
+        component: BuyComponent
       }
     ]
   )],

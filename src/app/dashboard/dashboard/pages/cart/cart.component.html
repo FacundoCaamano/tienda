@@ -21,7 +21,9 @@
     </div>
   </div>
 </div>
-
+<div>
+    <button class="btn btn-primary" (click)="buyCart()">Comprar</button>
+</div>
 <div *ngIf="(cart$ | async)?.products?.length === 0">
   <p>No hay productos en el carrito</p>
 </div>

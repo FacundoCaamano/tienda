@@ -1,17 +1,16 @@
 <div class="containerProducts">
-
   <div>
-    <p>filtrar</p>
-    <ul>
-      <li (click)="mayorPrecio()">mayor precio</li>
-      <li (click)="menorPrecio()">menor precio</li>
-      <li>limite</li>
-      <!-- filtrar por precio -->
+    <p>Filtrar</p>
+    <ul class="list-group">
+      <li [ngClass]="{'active' : active == '+'}" (click)="mayorPrecio()">Mayor precio</li>
+      <li  [ngClass]="{'active' : active == '-'}" (click)="menorPrecio()">Menor precio</li>
+      <label class="form-label">Limite</label>
       <input [(ngModel)]="priceInput" 
       type="number" 
       class="form-control" 
       >
-      <button type="button" (click)="filterByPrice()" > filtrar</button>
+      <button class="btn-filter" type="button" (click)="filterByPrice()" > Filtrar</button>
+      <button class="btn btn-secondary w-50 mt-3" (click)="limpiarFiltros()">Limpiar</button>
     </ul>
   </div>
   <div>

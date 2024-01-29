@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, filter } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Cart } from '../model';
+import { Products } from '../../products/models';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,9 @@ export class CartService {
 
   private _productsInCart$ = new BehaviorSubject<number>(0)
   public  productsInCart$ = this._productsInCart$.asObservable()
+
+  private _setProductsToBuy$ = new BehaviorSubject<any>([])
+  public  setProductsToBuys$ = this._setProductsToBuy$.asObservable()
 
   constructor(private http:HttpClient) { }
 
@@ -52,6 +56,19 @@ export class CartService {
         this.loadCart(cartId)
       }
     })
+  }
+
+  setBuy(products:Observable<any>){
+    products.subscribe(
+      {
+        next: data =>{
+          this._setProductsToBuy$.next(data)
+          console.log(data);
+          
+        }
+      }
+    )
+    
   }
  
 }

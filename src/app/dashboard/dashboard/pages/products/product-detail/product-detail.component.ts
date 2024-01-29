@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from '../service/products.service';
 import { Products } from '../models';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/service/auth.service';
 import { CartService } from '../../cart/service/cart.service';
@@ -33,7 +33,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
     this.productId = this.activatedRoute.snapshot.params['id']
     this.product = this.produductService.getProductId(this.productId)
-    this.authService.user$.subscribe( user =>{
+    this.authService.user$.pipe(take(1)).subscribe( user =>{
     this.cart = user?.cart
 
    })

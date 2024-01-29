@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailComponent } from './dashboard/pages/products/product-detail/product-detail.component';
 import { CartComponent } from './dashboard/pages/cart/cart.component';
 import { CartBadgeComponent } from './dashboard/components/cart-badge/cart-badge.component';
+import { BuyComponent } from './dashboard/pages/buy/buy.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { CartBadgeComponent } from './dashboard/components/cart-badge/cart-badge
     EditComponent,
     ProductDetailComponent,
     CartComponent,
-    CartBadgeComponent
+    CartBadgeComponent,
+    BuyComponent
   ],
   imports: [
     CommonModule,

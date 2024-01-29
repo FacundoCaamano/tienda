@@ -10,3 +10,24 @@
     display: flex;
     justify-content: space-between;
 }
+
+.list-group{
+    li{
+        list-style: circle;
+        font-weight: 700;
+    }
+    li:hover{
+        cursor: pointer;
+        transform: scale(1.03);
+    }
+    .btn-filter{
+        background-color: var(--color2);
+        margin-top: 10px;
+        border: 2px solid;
+        border-radius: 5px;
+        width: 100px;
+    }
+}
+.active{
+    color: var(--color2);
+}
