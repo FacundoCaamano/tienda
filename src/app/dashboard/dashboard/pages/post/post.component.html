@@ -1,0 +1,56 @@
+
+<form [formGroup]="form" (ngSubmit)="create()">
+    <div>
+        <label class="form-label">title</label>
+        <input formControlName="title" class="form-control" type="text">
+        <div *ngIf="form.get('title')?.invalid && form.get('title')?.touched">
+            <p class="text-danger">error</p>
+        </div>
+    </div>
+    <div>
+        <label class="form-label">price</label>
+        <input formControlName="price" class="form-control" type="text">
+        <div *ngIf="form.get('price')?.invalid && form.get('price')?.touched">
+            <p class="text-danger">error</p>
+        </div>
+    </div>
+
+    <div formArrayName="thumbnails" *ngIf="thumbnailsArray">
+        <div *ngFor="let control of thumbnailsArray.controls; let i = index">
+          <label class="form-label">Thumbnail {{ i + 1 }}</label>
+          <input formControlName="{{i}}" class="form-control" type="text">
+          <div *ngIf="control.invalid && control.touched">
+            <p class="text-danger">Error en Thumbnail {{ i + 1 }}</p>
+          </div>
+          <button class="text-danger" (click)="deleteThumbnailField(i)">Delete</button>
+        </div>
+      </div>
+
+        <div>
+        <label class="form-label">description</label>
+        <input formControlName="description" class="form-control" type="text">
+        <div *ngIf="form.get('description')?.invalid && form.get('description')?.touched">
+            <p class="text-danger">error</p>
+        </div>
+    </div>
+    <div>
+        <label class="form-label">code</label>
+        <input formControlName="code" class="form-control" type="text">
+        <div *ngIf="form.get('code')?.invalid && form.get('code')?.touched">
+            <p class="text-danger">error</p>
+        </div>
+    </div>
+    <div>
+        <label class="form-label">stock</label>
+        <input formControlName="stock" class="form-control" type="number">
+        <div *ngIf="form.get('stock')?.invalid && form.get('stock')?.touched">
+            <p class="text-danger">error</p>
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-secondary" type="button" (click)="addThumbnailField()">Agregar Thumbnail</button>
+      </div>
+    <div>
+        <button class="btn btn-secondary" type="submit">Crear</button>
+    </div>
+</form>

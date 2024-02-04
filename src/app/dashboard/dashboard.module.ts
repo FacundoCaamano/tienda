@@ -15,6 +15,8 @@ import { ProductDetailComponent } from './dashboard/pages/products/product-detai
 import { CartComponent } from './dashboard/pages/cart/cart.component';
 import { CartBadgeComponent } from './dashboard/components/cart-badge/cart-badge.component';
 import { BuyComponent } from './dashboard/pages/buy/buy.component';
+import { SalesComponent } from './dashboard/pages/sales/sales.component';
+import { PostComponent } from './dashboard/pages/post/post.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { BuyComponent } from './dashboard/pages/buy/buy.component';
     ProductDetailComponent,
     CartComponent,
     CartBadgeComponent,
-    BuyComponent
+    BuyComponent,
+    SalesComponent,
+    PostComponent
   ],
   imports: [
     CommonModule,

@@ -16,6 +16,10 @@
                 Compras
                 <img class="icon-list" src="./assets/icons/lista-de-la-compra.png" alt="">
             </li>
+            <li *ngIf="user.role === 'seller'" class="list-group-item list-group-item-success" routerLink="sales">
+              Ventas
+              <img class="icon-list" src="./assets/icons/lista-de-la-compra.png" alt="">
+            </li>
             <li class="list-group-item list-group-item-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Editar
                 <img class="icon-list" src="./assets/icons/engranaje.png" alt="">

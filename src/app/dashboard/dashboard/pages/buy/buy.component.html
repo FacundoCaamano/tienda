@@ -8,6 +8,6 @@
         </h4>
         <img src={{cart.product.thumbnail[0]}} alt="">
         <span>{{cart.product.price | currency}}</span>
+        <button class="btn btn-primary" (click)="buy(cart, cart.quantity)">Comprar</button>
     </div>
-    <button class="btn btn-primary">Comprar</button>
 </div>

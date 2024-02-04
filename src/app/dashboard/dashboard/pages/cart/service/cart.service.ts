@@ -62,9 +62,7 @@ export class CartService {
     products.subscribe(
       {
         next: data =>{
-          this._setProductsToBuy$.next(data)
-          console.log(data);
-          
+          this._setProductsToBuy$.next(data)          
         }
       }
     )

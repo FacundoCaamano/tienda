@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './dashboard/pages/home/home.component';
@@ -10,6 +10,8 @@ import { EditComponent } from './dashboard/pages/profile/components/edit/edit.co
 import { ProductDetailComponent } from './dashboard/pages/products/product-detail/product-detail.component';
 import { CartComponent } from './dashboard/pages/cart/cart.component';
 import { BuyComponent } from './dashboard/pages/buy/buy.component';
+import { SalesComponent } from './dashboard/pages/sales/sales.component';
+import { PostComponent } from './dashboard/pages/post/post.component';
 
 
 
@@ -43,8 +45,21 @@ import { BuyComponent } from './dashboard/pages/buy/buy.component';
         component: CartComponent
       },
       {
+        path: 'profile/sales',
+        component: SalesComponent
+      },
+      {
+        path: 'profile/post',
+        component: PostComponent
+      },
+      {
         path: 'buy',
         component: BuyComponent
+      },
+      {
+
+        path: 'buys',
+        component: BuysComponent
       }
     ]
   )],

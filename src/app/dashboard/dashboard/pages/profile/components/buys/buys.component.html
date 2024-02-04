@@ -1,18 +1,19 @@
 <button class="btn btn-secondary" routerLink="../">
     volver
 </button>
-<pre>
-    {{
-        buys$ | async| json
-    }}
-</pre>
-<div class="buys-container">
+<div *ngFor="let buys of products.buys" class="buys-container">
     <ul class="list-group">
         <li>llega: </li>
         <li>direccion:</li>
         <li>estado:</li>
-        <li>total:</li>
-        <li>fecha:</li>
-        <li>items:</li>
+        <li>total: {{buys.total}}</li>
+        <li>fecha: {{buys.fecha}}</li>
+        <li>items:
+            <ul>
+                <li *ngFor="let product of buys.products">
+                    {{product.title}}
+                </li>
+            </ul>
+        </li>
     </ul>
 </div>

@@ -5,5 +5,8 @@ export interface Products{
     thumbnail:Array<string>,
     description:string,
     code:string,
-    stock:number
+    stock:number,
+    sellerId:string
 }
+
+export type CreateProduct = Omit<Products, '_id'>
