@@ -1,13 +1,20 @@
-<p>buy works!</p>
 <div>
     <h3>Comprar</h3>
-   
-    <div *ngFor="let cart of (cartToBuy$ | async)?.products">
-        <h4>
-            {{cart.product.title}}
-        </h4>
-        <img src={{cart.product.thumbnail[0]}} alt="">
-        <span>{{cart.product.price | currency}}</span>
-        <button class="btn btn-primary" (click)="buy(cart, cart.quantity)">Comprar</button>
+    <div class="productToBuy" *ngFor="let cart of (cartToBuy$ | async)?.products">
+        <div> 
+            <img class="imgProductBuy" src={{cart.product.thumbnail[0]}} alt="">
+        </div>
+        <div class="detail"> 
+            <h4>
+                {{cart.product.title}}
+            </h4>
+            <span>{{cart.product.price | currency}}</span>
+            <button class="btn btn-primary" (click)="buy(cart, cart.product.price)">Comprar este producto</button>
+        </div>
+    </div>
+    <div >
+        <button class="btn btn-comprarCarro" (click)="buyCart()">
+            comprar carro
+        </button>
     </div>
 </div>

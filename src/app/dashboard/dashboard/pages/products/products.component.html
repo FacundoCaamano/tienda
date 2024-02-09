@@ -1,5 +1,5 @@
 <div class="containerProducts">
-  <div>
+  <div class="card-filtersContainer">
     <p>Filtrar</p>
     <ul class="list-group">
       <li [ngClass]="{'active' : active == '+'}" (click)="mayorPrecio()">Mayor precio</li>
@@ -13,16 +13,16 @@
       <button class="btn btn-secondary w-50 mt-3" (click)="limpiarFiltros()">Limpiar</button>
     </ul>
   </div>
-  <div>
+  <div class="card-productContainer">
     <div *ngFor="let product of products$ | async" class="card mb-3  card-product">
       <div class="row g-0">
         <div class="col-md-4 " routerLink="detail/{{product._id}}">
-          <img src="{{product.thumbnail[0]}}" class="img-fluid rounded-start" alt="imgProduct">
+          <img src="{{product.thumbnail[0]}}" class="img-fluid rounded-start imgProduct" alt="imgProduct">
         </div>
         <div class="col-md-8 ">
           <div class="card-bod ">
             <h5 class="card-title">{{product.title}}</h5>
-            <p class="card-text">{{product.description}}</p>
+            <p class="card-text">{{product.description | slice:0:60}}...</p>
             <p class="card-text"><small class="text-body-secondary">Stock: {{product.stock}} unidades</small></p>
           <p class="card-text"><small class="text-body-secondary"> {{product.price | currency}}</small></p>
         </div>

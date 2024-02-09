@@ -1,15 +1,26 @@
+.containerProducts{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+.card-productContainer{  
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    width: 80%;
+}
+.card-filtersContainer{  
+    width: 20%;
+}
 .card-product{
     transition: ease all 0.2s;
+    width: 80%;
 }
 .card-product:hover{
     cursor: pointer; 
     transform: scale(1.01);
 }
 
-.containerProducts{
-    display: flex;
-    justify-content: space-between;
-}
 
 .list-group{
     li{
@@ -30,4 +41,9 @@
 }
 .active{
     color: var(--color2);
+}
+.imgProduct{
+ width: 150px;   
+ object-fit: cover;
+ height: 100%;
 }

@@ -22,8 +22,6 @@ export class BuysComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService, private userService:UserService) {
     this.user = this.authService.user$;
-   
-    
   }
 
   ngOnInit(): void {
@@ -31,20 +29,14 @@ export class BuysComponent implements OnInit, OnDestroy {
       if (userData) {
         this.userId = userData.id;
         this.userService.loadBuys(this.userId!);
-        this.buys$=this.userService.getBuys()
-        
+        this.buys$=this.userService.getBuys()  
       }
     });
     this.buys$.subscribe(
       data => {
-        this.products = data
-        console.log(this.products);
-        
+        this.products = data        
       }
     )
-    
-    
-    
   }
 
   ngOnDestroy(): void { 

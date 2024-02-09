@@ -13,39 +13,52 @@ import { BuyService } from './service/buy.service';
   styleUrls: ['./buy.component.scss']
 })
 export class BuyComponent {
-  cartToBuy$!:Observable<Cart>
+  cartToBuy$!: Observable<Cart>
   userId!: string | undefined
+  totalPrice: number = 0; 
+
   constructor(
-    private cartService:CartService,
-    private router:Router,
-    private authService:AuthService,
-    private buyService:BuyService
-    ){
+    private cartService: CartService,
+    private router: Router,
+    private authService: AuthService,
+    private buyService: BuyService
+  ) {
     this.cartToBuy$ = this.cartService.setProductsToBuys$
-    
+
     this.cartToBuy$.pipe(take(1)).subscribe({
-      next:(data)=>{
-        if(!data.products){
+      next: (data) => {
+        if (!data.products) {
           this.router.navigate(['dashboard/profile/cart'])
         }
       }
     })
 
+    this.cartToBuy$.pipe(take(1)).subscribe({
+      next : data =>{
+        this.totalPrice = data.products.reduce((total, product) => total + product.product.price, 0)
+      }
+    })
+
     this.authService.user$.subscribe(
-      data =>{
+      data => {
         this.userId = data?.id
       }
     )
-    
-    
   }
 
-  buy(products:any, quantity:number){
-    
-    console.log(products.product._id, quantity);
-    
-  this.buyService.createBuy(products.product._id, quantity, this.userId as string)
-    
+  buy(products: any, quantity: number) {
+    this.buyService.createBuy(products.product._id, quantity, this.userId as string)
+  }
+
+  buyCart(){
+    let dataCart 
+    this.cartToBuy$.subscribe(
+      data =>{
+        dataCart = data 
+        const productIds = dataCart.products.map(product => product.product._id);
+        this.buyService.createBuy(productIds, this.totalPrice ,this.userId as string)
+      }
+    )
     
   }
 }

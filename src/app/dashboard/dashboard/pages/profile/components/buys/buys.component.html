@@ -8,12 +8,14 @@
         <li>estado:</li>
         <li>total: {{buys.total}}</li>
         <li>fecha: {{buys.fecha}}</li>
-        <li>items:
-            <ul>
-                <li *ngFor="let product of buys.products">
+        <li class="products-container">items:
+            <ul *ngFor="let product of buys.products">
+                <li >
                     {{product.title}}
                 </li>
+                <img class="width-img-buy" src={{product.thumbnail[0]}} alt="">
             </ul>
         </li>
     </ul>
 </div>
+{{buys$ | async | json}}

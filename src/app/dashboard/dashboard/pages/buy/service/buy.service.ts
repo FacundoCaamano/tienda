@@ -17,7 +17,7 @@ export class BuyService {
 
   constructor(private http:HttpClient) { }
 
-  createBuy(products:Products[],total:number,userId:string, ){
+  createBuy(products:any,total:number,userId:string, ){
     this.http.post<Buy>(this.url + '/buys/createbuy',{ products, total, userId})
     .subscribe({
       next: (response) => {
