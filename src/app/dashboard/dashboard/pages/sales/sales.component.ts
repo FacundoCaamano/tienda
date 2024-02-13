@@ -17,17 +17,13 @@ export class SalesComponent{
     this.authService.user$.pipe(take(1)).subscribe(
       data =>{
         this.userId = data?.id
+        this.saleService.loadSales(this.userId)
         this.obtenerSales()
       }
       )
     }
     obtenerSales(){
-      this.saleService.getSales(this.userId).subscribe(
-        data => {
-          this.sales = data
-        }
-      )
-      
+     this.sales = this.saleService.getSales()
       
     }
 }

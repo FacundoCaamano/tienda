@@ -16,7 +16,15 @@ export class SalesService {
 
   constructor(private http:HttpClient) {}
 
-   getSales(userId:string){
-    return this.http.get<Sales[]>(this.url + '/sales/' + userId)
+    loadSales(userId:string){
+       this.http.get<Sales[]>(this.url + '/sales/' + userId).subscribe(
+        data =>{
+          this.sales = data
+        }
+      )
+    }
+
+   getSales(){
+    return this.sales
   }
 }
