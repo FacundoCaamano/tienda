@@ -25,9 +25,7 @@ export class AuthService {
       (res: any) => {
         // Almacenar el token en localStorage
         localStorage.setItem('token', res.token);
-        this.router.navigate(['/dashboard/home']);
-        console.log('localStorage', localStorage.getItem('token'));
-        
+        this.router.navigate(['/dashboard/home']);      
       },
       error => {
         if (error.status === 401) {
