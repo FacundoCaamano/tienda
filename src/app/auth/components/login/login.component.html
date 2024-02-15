@@ -18,7 +18,8 @@
         </div>
         <div class="mb-3">
             <button (click)="login()" class="btnForm">Ingresar</button>
-            <button class="btnForm btnFormRegister" [routerLink]="['/auth/register']">  Crear una cuenta</button>
+            <button class="btnForm btnFormRegister" routerLink="/auth/register">  Crear una cuenta</button>
+            <button class="btn-continuar" routerLink="/dashboard">Continuar sin cuenta</button>
         </div>
         <div>
             <p class="text-danger">{{errorMesages$ | async}}</p>

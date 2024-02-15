@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, of } from 'rxjs';
 import { user, userData } from '../models';
 import { environment } from 'src/environments/environment';
 
@@ -60,6 +60,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/auth/login']); 
+    this._user$.next(null);
   }
 
  

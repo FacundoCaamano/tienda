@@ -1,0 +1,9 @@
+.inicio-lista{
+    li{
+        list-style: none;
+        color: var(--color2);
+        -webkit-text-stroke-width: 0.22px;
+        -webkit-text-stroke-color: black;
+        font-size: 1.1rem;
+    }
+}

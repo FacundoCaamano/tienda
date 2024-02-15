@@ -9,7 +9,7 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{ cartItem.product.title }}</h5>
-        <p class="card-text">{{ cartItem.product.description }}</p>
+        <p class="card-text">{{ cartItem.product.description | slice:00:50 }} ...</p>
         <p class="card-text">
           <small class="text-body-secondary">{{ cartItem.product.price | currency }}</small>
         </p>

@@ -1,47 +1,46 @@
 <div class="form-container">
     <form [formGroup]="form" (ngSubmit)="create()" >
         <div>
-            <label class="form-label">title</label>
+            <label class="form-label">Titulo</label>
             <input formControlName="title" class="form-control" type="text">
             <div *ngIf="form.get('title')?.invalid && form.get('title')?.touched">
                 <p class="text-danger">error</p>
             </div>
         </div>
         <div>
-            <label class="form-label">price</label>
+            <label class="form-label">Precio</label>
             <input formControlName="price" class="form-control" type="text">
             <div *ngIf="form.get('price')?.invalid && form.get('price')?.touched">
                 <p class="text-danger">error</p>
             </div>
         </div>
-        
         <div formArrayName="thumbnails" *ngIf="thumbnailsArray">
             <div *ngFor="let control of thumbnailsArray.controls; let i = index">
-                <label class="form-label">Thumbnail {{ i + 1 }}</label>
-                <input formControlName="{{i}}" class="form-control" type="text">
+                <label class="form-label">foto {{ i + 1 }}</label>
+                <input placeholder="formato: https://resource.logitech.com/w_692,c_lpad,ar_4:3,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/mice/m190-wireless-mouse/m190-wireless-mouse-blue-gallery-01.png?v=1" formControlName="{{i}}" class="form-control" type="text">
                 <div *ngIf="control.invalid && control.touched">
                     <p class="text-danger">Error en Thumbnail {{ i + 1 }}</p>
                 </div>
-                <button class="text-danger" (click)="deleteThumbnailField(i)">Delete</button>
+                <button class="btn btn-danger" (click)="deleteThumbnailField(i)">Delete</button>
             </div>
         </div>
         
         <div>
-            <label class="form-label">description</label>
+            <label class="form-label">Description</label>
             <input formControlName="description" class="form-control" type="text">
             <div *ngIf="form.get('description')?.invalid && form.get('description')?.touched">
                 <p class="text-danger">error</p>
             </div>
         </div>
         <div>
-            <label class="form-label">code</label>
+            <label class="form-label">Code</label>
             <input formControlName="code" class="form-control" type="text">
             <div *ngIf="form.get('code')?.invalid && form.get('code')?.touched">
                 <p class="text-danger">error</p>
             </div>
         </div>
         <div>
-            <label class="form-label">stock</label>
+            <label class="form-label">Stock</label>
             <input formControlName="stock" class="form-control" type="number">
             <div *ngIf="form.get('stock')?.invalid && form.get('stock')?.touched">
                 <p class="text-danger">error</p>

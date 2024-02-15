@@ -11,31 +11,50 @@
       </div>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">C.P</h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" routerLink="home">Home</a>
+              <a class="nav-link active" aria-current="page" routerLink="home">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="products">products</a>
+              <a class="nav-link" routerLink="products">productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="profile">profile</a>
+              <a *ngIf="user$ | async">prueba</a>
+              <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">perfil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="buys">buys</a>
+              <a class="nav-link" routerLink="buys">compras</a>
             </li>
             <li *ngIf="(user$ |async)?.role === 'seller'">
-              <a class="nav-link" routerLink="profile/post">publish product</a>
+              <a class="nav-link" routerLink="profile/post">publicar producto</a>
             </li>
           </ul>
         </div>
         <div class="Logout-container">
-          <button (click)="logout()" class="btn btn-danger">Logout</button>
+          <button (click)="logout()" class="btn btn-danger">Cerrar sesion</button>
         </div>
       </div>
     </div>
   </nav>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Ups!</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Necesita iniciar sesion para continuar
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">continuar sin cuenta</button>
+        <button type="button" class="btn btn-primary" routerLink="/auth/login"  data-bs-dismiss="modal">Iniciar sesion</button>
+      </div>
+    </div>
+  </div>
+</div>
