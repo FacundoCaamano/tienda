@@ -60,6 +60,10 @@ import { PostComponent } from './dashboard/pages/post/post.component';
 
         path: 'buys',
         component: BuysComponent
+      },
+      {
+        path: '**',
+        redirectTo:'home'
       }
     ]
   )],

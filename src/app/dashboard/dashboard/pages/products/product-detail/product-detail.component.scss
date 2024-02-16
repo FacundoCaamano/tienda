@@ -84,3 +84,29 @@
 .btn-agregar:hover{
     transform: scale(1.03);
 }
+
+.desactive{
+    background-color: grey !important
+}
+.desactive:hover{
+    transform: scale(1);
+}
+.messageLogin{
+    opacity: 0;
+    position: absolute;
+    z-index: 1;
+    background-color: rgb(230, 230, 230);
+    width: 120px !important;
+    translate: 0px -70px;
+    transition: ease all 0.3s;
+    padding: 10px;
+    border: none !important;
+    border-radius: 10px;
+}
+
+
+.buttonsContainer:hover{
+     .messageLogin{
+        opacity: 1;
+    }
+}

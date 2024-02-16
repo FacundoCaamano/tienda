@@ -21,6 +21,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   quantity:number = 1
 
+  user:any
+
   private suscription!: Subscription
 
   constructor(
@@ -36,6 +38,16 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     this.authService.user$.pipe(take(1)).subscribe( user =>{
     this.cart = user?.cart
 
+    this.authService.user$.pipe(take(1)).subscribe(
+      data =>{
+        if(data){
+          this.user = true
+        }
+        else{
+          this.user = false
+        }
+      }
+    )    
    })
   }
   ngOnInit(): void {

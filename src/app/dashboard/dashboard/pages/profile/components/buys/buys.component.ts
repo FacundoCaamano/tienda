@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, take } from 'rxjs';
 import { userData } from 'src/app/auth/models';
 import { AuthService } from 'src/app/auth/service/auth.service';
 import { UserService } from '../../service/user.service';
@@ -32,11 +32,12 @@ export class BuysComponent implements OnInit, OnDestroy {
         this.buys$=this.userService.getBuys()  
       }
     });
-    this.buys$.subscribe(
+    this.buys$.pipe(take(1)).subscribe(
       data => {
         this.products = data        
       }
     )
+    
   }
 
   ngOnDestroy(): void { 

@@ -11,7 +11,7 @@ import { Products } from '../../products/models';
 export class CartService {
   url = environment.api
 
-  private _cart$ = new BehaviorSubject<Cart>({} as Cart)
+  private _cart$ = new BehaviorSubject<Cart | null>({} as Cart)
   public cart$ = this._cart$.asObservable()
 
   private _productsInCart$ = new BehaviorSubject<number>(0)
@@ -67,6 +67,11 @@ export class CartService {
       }
     )
     
+  }
+
+  clearCart(){
+    this._cart$.next(null)
+    this._productsInCart$.next(0)
   }
  
 }

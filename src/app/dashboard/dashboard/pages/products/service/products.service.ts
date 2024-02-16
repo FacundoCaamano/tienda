@@ -32,12 +32,8 @@ export class ProductsService {
    }
 
    getProductId(id:string){
-    const httpOptions= {
-      headers: new HttpHeaders({
-        'authorization': localStorage.getItem('token')!
-      })
-    }
-    return this.http.get<Products>(this.url + '/products/' + id , httpOptions)
+   
+    return this.http.get<Products>(this.url + '/products/' + id )
    }
 
    postProduct(product:CreateProduct):void{
