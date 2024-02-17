@@ -5,12 +5,29 @@
     --color3:#f2e9e1;
     --color4: #1c140d;
     --color5: #cbe86b;
+    --backNoti: black;
 }
 
-// :root{
-//     --color1: #cbdad5;
-//     --color2:#89a7b1;
-//     --color3:#566981;
-//     --color4: #3a415a;
-//     --color5: #34344e;
-// }
+.notifier{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 1px;
+    left: 0px;
+    background-color: rgba(128, 128, 128, 0.9);
+    div{
+        background-color: var(--backNoti);
+        color: var(--color2);
+        position: absolute;
+        z-index: 2;
+        top: 40vh;
+        left: 20vw;
+        width: 60vw;
+        min-height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 3px solid var(--color2);
+        border-radius: 20px ;
+    }
+}

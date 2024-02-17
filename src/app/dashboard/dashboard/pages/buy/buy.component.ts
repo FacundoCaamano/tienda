@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/service/auth.service';
 import { Products } from '../products/models';
 import { BuyService } from './service/buy.service';
+import { NotifierService } from 'src/app/core/service/notifier.service';
 
 @Component({
   selector: 'app-buy',
@@ -16,12 +17,13 @@ export class BuyComponent {
   cartToBuy$!: Observable<Cart>
   userId!: string | undefined
   totalPrice: number = 0; 
-
+  message = ''
   constructor(
     private cartService: CartService,
     private router: Router,
     private authService: AuthService,
-    private buyService: BuyService
+    private buyService: BuyService,
+    private NotifierService:NotifierService
   ) {
     this.cartToBuy$ = this.cartService.setProductsToBuys$
 
@@ -48,6 +50,7 @@ export class BuyComponent {
 
   buy(products: any, quantity: number) {
     this.buyService.createBuy(products.product._id, quantity, this.userId as string)
+    this.message =  this.NotifierService.buy()
   }
 
   buyCart(){
@@ -57,8 +60,14 @@ export class BuyComponent {
         dataCart = data 
         const productIds = dataCart.products.map(product => product.product._id);
         this.buyService.createBuy(productIds, this.totalPrice ,this.userId as string)
+        this.message = this.NotifierService.cartBuy()
       }
-    )
-    
+      )
+      
+    }
+
+  clearMessage(){
+    this.message = ''
+    this.NotifierService.clearMessage()
   }
 }

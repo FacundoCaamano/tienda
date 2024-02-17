@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ProductsService } from '../products/service/products.service';
 import { AuthService } from 'src/app/auth/service/auth.service';
+import { NotifierService } from 'src/app/core/service/notifier.service';
 
 @Component({
   selector: 'app-post',
@@ -11,7 +12,16 @@ import { AuthService } from 'src/app/auth/service/auth.service';
 export class PostComponent {
 
   sellerId!:string | undefined
-  constructor(private fb: FormBuilder, private productService:ProductsService, private authService:AuthService) {
+
+  message = ''
+  constructor(
+    private fb: FormBuilder, 
+    private productService:ProductsService, 
+    private authService:AuthService,
+    private notifierService:NotifierService
+    ) {
+      
+      
     this.authService.user$.subscribe(
       (data)=>{
         this.sellerId = data?.id
@@ -57,7 +67,13 @@ export class PostComponent {
         sellerId : this.sellerId as string
       }
       this.productService.postProduct(product)
-    }
-    console.log(this.form.value);
+      this.message = this.notifierService.successful()
+      this.form.reset()
+      }
+  }
+
+  clearMessage(){
+    this.message = ''
+    this.notifierService.clearMessage()
   }
 }

@@ -1,3 +1,8 @@
+<div *ngIf="message" (click)="clearMessage()" class="notifier">
+    <div >
+        {{message}}
+    </div>
+</div>
 <div class="form-container">
     <form [formGroup]="form" (ngSubmit)="create()" >
         <div>
