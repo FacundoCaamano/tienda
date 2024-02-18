@@ -35,4 +35,8 @@ export class CartComponent implements OnDestroy {
     this.cartService.setBuy(this.cart$)
     
   }
+
+  clearCart(){
+    this.cartService.clearCartDb(this.cartId)
+  }
 }

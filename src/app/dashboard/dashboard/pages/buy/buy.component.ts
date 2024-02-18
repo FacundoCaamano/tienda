@@ -50,9 +50,14 @@ export class BuyComponent {
 
   buy(products: any, quantity: number) {
     this.buyService.createBuy(products.product._id, quantity, this.userId as string)
+    this.cartToBuy$.subscribe(
+      data =>{
+        this.cartService.deleteProductFromCart(data._id,products.product._id)
+      }
+    )
     this.message =  this.NotifierService.buy()
   }
-
+  
   buyCart(){
     let dataCart 
     this.cartToBuy$.subscribe(
@@ -61,13 +66,15 @@ export class BuyComponent {
         const productIds = dataCart.products.map(product => product.product._id);
         this.buyService.createBuy(productIds, this.totalPrice ,this.userId as string)
         this.message = this.NotifierService.cartBuy()
+        this.cartService.clearCartDb(data._id)
       }
       )
       
     }
-
-  clearMessage(){
-    this.message = ''
-    this.NotifierService.clearMessage()
+    
+    clearMessage(){
+      this.message = ''
+      this.NotifierService.clearMessage()
+      this.router.navigate(['/dashboard/buys'])
+    }
   }
-}

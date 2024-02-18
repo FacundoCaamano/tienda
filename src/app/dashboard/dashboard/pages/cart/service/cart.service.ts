@@ -73,5 +73,15 @@ export class CartService {
     this._cart$.next(null)
     this._productsInCart$.next(0)
   }
+
+  clearCartDb(cartId:string){
+    this.http.delete(this.url + '/carts/' + cartId + '/products-clear').subscribe(
+      data =>{
+        this.clearCart()
+      }
+    )
+  }
+
+
  
 }

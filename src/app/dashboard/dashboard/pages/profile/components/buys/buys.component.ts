@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/auth/service/auth.service';
 import { UserService } from '../../service/user.service';
 import { Buy } from './model';
 import { take } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buys',
@@ -23,10 +24,10 @@ export class BuysComponent implements OnInit, OnDestroy {
   private userSubscription: Subscription | undefined;
   private buysSubscription: Subscription | undefined;
 
-  constructor(private authService: AuthService, private userService: UserService) {
+  constructor(private authService: AuthService, private userService: UserService, private router:Router) {
     this.user = this.authService.user$;
   }
-  
+ 
   ngOnInit(): void {
     this.userSubscription = this.user.subscribe((userData: userData | null) => {
       if (userData) {

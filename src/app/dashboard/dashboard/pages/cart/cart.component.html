@@ -1,29 +1,33 @@
 
+<div class="m-3">
 
-<div *ngFor="let cartItem of (cart$ | async)?.products" class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-     
-      <img src="{{ cartItem.product.thumbnail[0] }}" class="img-fluid rounded-start" alt="Product Image">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{ cartItem.product.title }}</h5>
-        <p class="card-text">{{ cartItem.product.description | slice:00:50 }} ...</p>
-        <p class="card-text">
-          <small class="text-body-secondary">{{ cartItem.product.price | currency }}</small>
-        </p>
-        <p>Cantidad: {{ cartItem.quantity }}</p>
+  <div *ngFor="let cartItem of (cart$ | async)?.products" class="card m-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        
+        <img src="{{ cartItem.product.thumbnail[0] }}" class="img-fluid rounded-start" alt="Product Image">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ cartItem.product.title }}</h5>
+          <p class="card-text">{{ cartItem.product.description | slice:00:50 }} ...</p>
+          <p class="card-text">
+            <small class="text-body-secondary">{{ cartItem.product.price | currency }}</small>
+          </p>
+          <p>Cantidad: {{ cartItem.quantity }}</p>
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-danger" (click)="deleteProduct(cartItem.product._id)">Eliminar</button>
       </div>
     </div>
-    <div>
-      <button class="btn btn-danger" (click)="deleteProduct(cartItem.product._id)">Eliminar</button>
-    </div>
   </div>
-</div>
-<div *ngIf="(cart$ | async)?.products?.length">
+  <div *ngIf="(cart$ | async)?.products?.length" class="btnContainer">
     <button class="btn btn-primary" (click)="buyCart()">Comprar</button>
-</div>
-<div *ngIf="!(cart$ | async)?.products?.length ">
-  <p>No hay productos en el carrito</p>
+    <button class="btn btn-danger" (click)="clearCart()">Vaciar carro</button>
+  </div>
+  
+  <div *ngIf="!(cart$ | async)?.products?.length ">
+    <p>No hay productos en el carrito</p>
+  </div>
 </div>
