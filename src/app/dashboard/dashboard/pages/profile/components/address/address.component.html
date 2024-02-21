@@ -1,0 +1,67 @@
+<div *ngIf="message" (click)="clearMessage()" class="notifier">
+  <div >
+      {{message}}
+  </div>
+</div>
+<h3>Direcciones</h3>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-md-6 p-1" *ngFor="let address of addresses | async">
+      <div class="card" style="width: 10rem;">
+        <div class="card-body">
+          <p class="card-text">{{ address.street }}</p>
+          <p class="card-text">{{ address.city }}</p>
+          <p class="card-text">{{ address.num }}</p>
+          <p class="card-text">{{ address.province }}</p>
+          <p class="card-text">{{ address.postalCode }}</p>
+        </div>
+        <button class="btn btn-danger" (click)="deleteAddress(address._id)">Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="street">Calle:</label>
+      <input type="text" id="street" formControlName="street">
+      <div *ngIf="addressForm.get('street')?.invalid && addressForm.get('street')?.touched">
+        <p class="text-danger">campo necesario</p>
+      </div>
+    </div>
+  
+    <div>
+      <label for="city">Ciudad:</label>
+      <input type="text" id="city" formControlName="city">
+      <div *ngIf="addressForm.get('city')?.invalid && addressForm.get('city')?.touched">
+        <p class="text-danger">campo necesario</p>
+      </div>
+    </div>
+  
+    <div>
+      <label for="num">Altura:</label>
+      <input type="text" id="num" formControlName="num">
+      <div *ngIf="addressForm.get('num')?.invalid && addressForm.get('num')?.touched">
+        <p class="text-danger">campo necesario</p>
+      </div>
+    </div>
+  
+    <div>
+      <label for="province">Provincia:</label>
+      <input type="text" id="province" formControlName="province">
+      <div *ngIf="addressForm.get('province')?.invalid && addressForm.get('province')?.touched">
+        <p class="text-danger">campo necesario</p>
+      </div>
+    </div>
+  
+    <div>
+      <label for="postalCode">Codigo postal:</label>
+      <input type="text" id="postalCode" formControlName="postalCode">
+      <div *ngIf="addressForm.get('postalCode')?.invalid && addressForm.get('postalCode')?.touched">
+        <p class="text-danger">campo necesario</p>
+      </div>
+    </div>
+  
+    <button type="submit">Agregar</button>
+  </form>

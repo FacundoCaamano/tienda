@@ -25,3 +25,11 @@
    align-items: center;
    flex-direction: column;
 }
+
+.address{
+    transition: ease all 0.4s;
+}
+
+.address:hover{
+    background-color: var(--color2);
+}

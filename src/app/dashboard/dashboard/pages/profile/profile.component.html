@@ -20,9 +20,13 @@
               Ventas
               <img class="icon-list" src="./assets/icons/lista-de-la-compra.png" alt="">
             </li>
-            <li class="list-group-item list-group-item-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <li class="list-group-item list-group-item-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                 Editar
                 <img class="icon-list" src="./assets/icons/engranaje.png" alt="">
+            </li>
+            <li class="list-group-item list-group-item-success" routerLink="address">
+              Direcciones
+              <img src="./assets/icons/mapa.png" alt="direccion" class="icon-list">
             </li>
         </ul>
         <div class="card-body">
@@ -31,7 +35,7 @@
         </div>
     </div>
 </div> 
-  <div *ngIf="user | async as user" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div *ngIf="user | async as user" class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

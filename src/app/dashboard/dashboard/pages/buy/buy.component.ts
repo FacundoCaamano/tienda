@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/auth/service/auth.service';
 import { Products } from '../products/models';
 import { BuyService } from './service/buy.service';
 import { NotifierService } from 'src/app/core/service/notifier.service';
+import { Address } from 'src/app/auth/models';
 
 @Component({
   selector: 'app-buy',
@@ -18,6 +19,8 @@ export class BuyComponent {
   userId!: string | undefined
   totalPrice: number = 0; 
   message = ''
+  addresses!:Observable<Array<Address>>
+  shippingAddress!:Address
   constructor(
     private cartService: CartService,
     private router: Router,
@@ -46,11 +49,13 @@ export class BuyComponent {
         this.userId = data?.id
       }
     )
+      this.authService.loadAddresses()
+      this.addresses = this.authService.getAddresses()
   }
 
-  buy(products: any, quantity: number) {
+  buy(products: any ,quantity: number) {
     this.buyService.createBuy(products.product._id, quantity, this.userId as string)
-    this.cartToBuy$.subscribe(
+    this.cartToBuy$.pipe(take(1)).subscribe(
       data =>{
         this.cartService.deleteProductFromCart(data._id,products.product._id)
       }
@@ -60,7 +65,7 @@ export class BuyComponent {
   
   buyCart(){
     let dataCart 
-    this.cartToBuy$.subscribe(
+    this.cartToBuy$.pipe(take(1)).subscribe(
       data =>{
         dataCart = data 
         const productIds = dataCart.products.map(product => product.product._id);
@@ -76,5 +81,9 @@ export class BuyComponent {
       this.message = ''
       this.NotifierService.clearMessage()
       this.router.navigate(['/dashboard/buys'])
+    }
+
+    setAddress(address:Address){
+      this.shippingAddress = address
     }
   }

@@ -12,7 +12,11 @@ export class NotifierService {
   successful(){
     this.message = 'accion completada correctamente'
     return this.message
-    
+  }
+
+  addAddress(){
+    this.message = 'direccion agregada'
+    return this.message
   }
 
   buy(){

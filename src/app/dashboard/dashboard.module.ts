@@ -17,6 +17,7 @@ import { CartBadgeComponent } from './dashboard/components/cart-badge/cart-badge
 import { BuyComponent } from './dashboard/pages/buy/buy.component';
 import { SalesComponent } from './dashboard/pages/sales/sales.component';
 import { PostComponent } from './dashboard/pages/post/post.component';
+import { AddressComponent } from './dashboard/pages/profile/components/address/address.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { PostComponent } from './dashboard/pages/post/post.component';
     CartBadgeComponent,
     BuyComponent,
     SalesComponent,
-    PostComponent
+    PostComponent,
+    AddressComponent
   ],
   imports: [
     CommonModule,

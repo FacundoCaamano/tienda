@@ -12,6 +12,7 @@ import { CartComponent } from './dashboard/pages/cart/cart.component';
 import { BuyComponent } from './dashboard/pages/buy/buy.component';
 import { SalesComponent } from './dashboard/pages/sales/sales.component';
 import { PostComponent } from './dashboard/pages/post/post.component';
+import { AddressComponent } from './dashboard/pages/profile/components/address/address.component';
 
 
 
@@ -51,6 +52,10 @@ import { PostComponent } from './dashboard/pages/post/post.component';
       {
         path: 'profile/post',
         component: PostComponent
+      },
+      {
+        path: 'profile/address',
+        component : AddressComponent
       },
       {
         path: 'buy',

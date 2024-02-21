@@ -1,3 +1,4 @@
+import { Type } from "@angular/core"
 import { Products } from "src/app/dashboard/dashboard/pages/products/models"
 
 export interface user{
@@ -13,8 +14,18 @@ export interface userData  {
     surname:string,
     email:string,
     role:string,
-    cart: string
+    cart: string,
+    addresses?: [Address]
 }
+export type Address = {
+        _id:string,
+        street: string,
+        city: string,
+        num: string,
+        province: string,
+        postalCode: string
+}
+
 
 export interface AuthRes {
     message:string,

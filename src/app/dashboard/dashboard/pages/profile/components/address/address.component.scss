@@ -1,0 +1,42 @@
+.form-container {
+    background-color: var(--color3);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Estilos para los campos de entrada */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--color4);
+    border-radius: 5px;
+    background-color: var(--color1);
+    color: var(--color4);
+}
+
+/* Estilos para las etiquetas */
+label {
+    font-weight: bold;
+    color: var(--color4);
+}
+
+/* Estilos para los mensajes de error */
+.error-message {
+    color: red;
+    font-size: 0.8rem;
+}
+
+/* Estilos para el botón de enviar */
+button[type="submit"] {
+    background-color: var(--color2);
+    color: var(--color4);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    -webkit-text-stroke-width: 0.4px;
+    -webkit-text-stroke-color: black;
+}
+

@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { user, userData } from 'src/app/auth/models';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { Address, user, userData } from 'src/app/auth/models';
+import { AuthService } from 'src/app/auth/service/auth.service';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,7 +15,12 @@ export class UserService {
   private _buys$ = new BehaviorSubject([])
   private buys$ = this._buys$.asObservable()
 
-  constructor(private htpp:HttpClient) {}
+  
+
+  constructor(
+    private http:HttpClient,
+    private authService:AuthService
+    ) {}
 
 
   loadBuys(id:string){
@@ -23,7 +29,7 @@ export class UserService {
         'Authorization': localStorage.getItem('token')!
       })
     }
-    this.htpp.get(this.url + '/buys/' + id, httpOptions).subscribe({
+    this.http.get(this.url + '/buys/' + id, httpOptions).subscribe({
       next: (data:any)=>{
         this._buys$.next(data)
       }
@@ -32,6 +38,7 @@ export class UserService {
   getBuys(){
     return this._buys$
   }
+  
 
  
 }
