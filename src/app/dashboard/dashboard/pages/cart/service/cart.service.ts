@@ -46,7 +46,6 @@ export class CartService {
         this.loadCart(cartId)
       }
     })
-    console.log('desde el servicio', productId, cartId);
     
   }
 

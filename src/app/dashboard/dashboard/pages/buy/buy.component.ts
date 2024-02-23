@@ -18,6 +18,7 @@ export class BuyComponent {
   cartToBuy$!: Observable<Cart>
   userId!: string | undefined
   totalPrice: number = 0; 
+  total:any
   message = ''
   addresses!:Observable<Array<Address>>
   shippingAddress!:Address
@@ -41,6 +42,8 @@ export class BuyComponent {
     this.cartToBuy$.pipe(take(1)).subscribe({
       next : data =>{
         this.totalPrice = data.products.reduce((total, product) => total + product.product.price, 0)
+        console.log(data);
+        
       }
     })
 
@@ -54,7 +57,7 @@ export class BuyComponent {
   }
 
   buy(products: any ,quantity: number) {
-    this.buyService.createBuy(products.product._id, quantity, this.userId as string)
+    this.buyService.createBuy(products.product._id, quantity, this.userId as string, this.shippingAddress)
     this.cartToBuy$.pipe(take(1)).subscribe(
       data =>{
         this.cartService.deleteProductFromCart(data._id,products.product._id)
@@ -69,7 +72,7 @@ export class BuyComponent {
       data =>{
         dataCart = data 
         const productIds = dataCart.products.map(product => product.product._id);
-        this.buyService.createBuy(productIds, this.totalPrice ,this.userId as string)
+        this.buyService.createBuy(productIds, this.totalPrice ,this.userId as string, this.shippingAddress)
         this.message = this.NotifierService.cartBuy()
         this.cartService.clearCartDb(data._id)
       }

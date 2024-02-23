@@ -1,11 +1,17 @@
 <button class="btn btn-secondary" routerLink="../">
     volver
 </button>
-
 <div *ngFor="let buys of products.buys" class="buys-container">
-    <ul class="list-group">
+    <ul *ngIf="isLoading" class="list-group">
         <li>llega:{{sumarDias(buys.fecha)}} </li>
-        <li>direccion:</li>
+        <hr>
+        <h5>direccion:</h5>
+        <li>Calle : {{buys.address.street}}</li>
+        <li>Ciudad: {{buys.address.city}}</li>
+        <li>Altura: {{buys.address.num}}</li>
+        <li>Provincia : {{buys.address.province}}</li>
+        <li>Codigo postal : {{buys.address.postalCode}}</li>
+        <hr>
         <li>estado:</li>
         <li>total: {{buys.total}}</li>
         <li>fecha: {{buys.fecha}}</li>
@@ -19,6 +25,9 @@
         </li>
     </ul>
 </div>
-<div *ngIf="!products.buys">
+<div *ngIf="!products.buys && isLoading">
     <p>no se han realizado compras</p>
+</div>
+<div *ngIf="isLoading == false" class="loadContainer">
+    <span  class="loader"></span>
 </div>

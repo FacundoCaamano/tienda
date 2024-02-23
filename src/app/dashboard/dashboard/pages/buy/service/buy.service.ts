@@ -4,6 +4,7 @@ import { BehaviorSubject, Subject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Buy } from '../models';
 import { Products } from '../../products/models';
+import { Address } from 'src/app/auth/models';
 
 @Injectable({
   providedIn: 'root'
@@ -17,20 +18,21 @@ export class BuyService {
 
   constructor(private http:HttpClient) { }
 
-  createBuy(products:any,total:number,userId:string, ){
-    this.http.post<Buy>(this.url + '/buys/createbuy',{ products, total, userId})
+  createBuy(products:any,total:number,userId:string, address:Address ){
+    this.http.post<Buy>(this.url + '/buys/createbuy',{ products, total, userId, address})
     .subscribe({
       next: (response) => {
         // Manejo de la respuesta aquí
-        console.log('Respuesta exitosa:', response);
       },
       error: (error) => {
         // Manejo de errores aquí
-        console.error('Error en la suscripción:', error);
       },
       complete: () => {
-        console.log('Suscripción completada');
       }
     })
+  }
+
+  createCartBuy(){
+    
   }
 }

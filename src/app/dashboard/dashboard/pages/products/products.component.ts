@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Observable, Subscription, defaultIfEmpty, map, of, switchMap, take } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Observable, Subject, Subscription, defaultIfEmpty, map, of, switchMap, take } from 'rxjs';
 import { AuthService } from 'src/app/auth/service/auth.service';
 import { Products } from './models';
 import { ProductsService } from './service/products.service';
@@ -11,17 +11,22 @@ import { ProductsService } from './service/products.service';
 })
 
 
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
  
   products$: Observable<Products[] | null>
   priceInput: any 
   active!:string
+
+  isLoading:Observable<boolean>
   
   constructor(private productService:ProductsService) {
     this.productService.loadProducts()
     this.products$ = productService.getProducts()
+    this.isLoading = this.productService.loader
     
-    
+  }
+  ngOnInit(): void {
+   
   }
   menorPrecio(){
     this.active = '-'

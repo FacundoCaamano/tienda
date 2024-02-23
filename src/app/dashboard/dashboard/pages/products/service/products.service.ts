@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, mergeMap, take } from 'rxjs';
+import { BehaviorSubject, Subject, map, mergeMap, take } from 'rxjs';
 import { CreateProduct, Products } from '../models';
 import { environment } from 'src/environments/environment';
 
@@ -13,7 +13,7 @@ export class ProductsService {
 
   private _products$ = new BehaviorSubject<Products[]>([])
   public products$ = this._products$.asObservable()
-
+  public loader = new BehaviorSubject<boolean>(true)
   
   constructor(private http:HttpClient) {
 
@@ -23,8 +23,9 @@ export class ProductsService {
      this.http.get<Products[]>(this.url + '/products').subscribe({
       next: (data)=>{
         this._products$.next(data)
+        this.loader.next(false)
       }
-     })
+    })
    }
 
    getProducts(){

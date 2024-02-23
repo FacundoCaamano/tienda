@@ -15,7 +15,6 @@ export class CartComponent implements OnDestroy {
   subscription!: Subscription
   constructor(private cartService:CartService, private router:Router){
     this.cart$ = this.cartService.getCart()
-    console.log(this.cart$);
     this.subscription = this.cartService.cart$.subscribe(cart =>{
       if(cart){
         this.cartId = cart._id

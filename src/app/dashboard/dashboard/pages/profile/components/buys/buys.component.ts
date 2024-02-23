@@ -4,7 +4,6 @@ import { userData } from 'src/app/auth/models';
 import { AuthService } from 'src/app/auth/service/auth.service';
 import { UserService } from '../../service/user.service';
 import { Buy } from './model';
-import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,6 +19,7 @@ export class BuysComponent implements OnInit, OnDestroy {
   buys$: Observable<Buy[]> | undefined; 
   products: any | undefined;
 
+  isLoading:boolean = false
 
   private userSubscription: Subscription | undefined;
   private buysSubscription: Subscription | undefined;
@@ -38,9 +38,13 @@ export class BuysComponent implements OnInit, OnDestroy {
           this.buysSubscription = this.buys$.subscribe(
             data => {
               this.products = data;
-            }
-            );
+            },
+            
+            )
           }
+          setTimeout(()=>{
+            this.isLoading = true
+          },500)
         }
       });
     }
