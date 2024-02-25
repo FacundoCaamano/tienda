@@ -18,10 +18,11 @@
         <li class="products-container">items:
             <ul *ngFor="let product of buys.products">
                 <li >
-                    {{product.title}}
-                </li>
-                <img class="width-img-buy" src={{product.thumbnail[0]}} alt="">
-            </ul>
+                   {{product.productId.title}}
+               </li>
+               <li>cantidad: {{product.quantity}}</li>
+               <img class="width-img-buy" src={{product.productId.thumbnail[0]}} alt=""> 
+           </ul>
         </li>
     </ul>
 </div>

@@ -42,8 +42,6 @@ export class BuyComponent {
     this.cartToBuy$.pipe(take(1)).subscribe({
       next : data =>{
         this.totalPrice = data.products.reduce((total, product) => total + product.product.price, 0)
-        console.log(data);
-        
       }
     })
 
@@ -56,29 +54,30 @@ export class BuyComponent {
       this.addresses = this.authService.getAddresses()
   }
 
-  buy(products: any ,quantity: number) {
-    this.buyService.createBuy(products.product._id, quantity, this.userId as string, this.shippingAddress)
-    this.cartToBuy$.pipe(take(1)).subscribe(
-      data =>{
-        this.cartService.deleteProductFromCart(data._id,products.product._id)
-      }
-    )
-    this.message =  this.NotifierService.buy()
-  }
-  
-  buyCart(){
-    let dataCart 
-    this.cartToBuy$.pipe(take(1)).subscribe(
-      data =>{
-        dataCart = data 
-        const productIds = dataCart.products.map(product => product.product._id);
-        this.buyService.createBuy(productIds, this.totalPrice ,this.userId as string, this.shippingAddress)
-        this.message = this.NotifierService.cartBuy()
-        this.cartService.clearCartDb(data._id)
-      }
-      )
-      
-    }
+  buy(product: any)  {
+    
+  console.log(product.product._id);
+  console.log(product.quantity);
+  const productInfo = [{ productId: product.product._id, quantity: product.quantity}]
+    
+     this.buyService.createBuy(productInfo, this.totalPrice, this.userId as string, this.shippingAddress);
+      this.cartToBuy$.pipe(take(1)).subscribe(data =>{
+          this.cartService.deleteProductFromCart(data._id, product.product._id);
+      });
+      this.message = this.NotifierService.buy();
+}
+
+buyCart(){
+     this.cartToBuy$.pipe(take(1)).subscribe(data =>{
+         const products = data.products.map(product => ({ productId: product.product._id, quantity: product.quantity }));
+        console.log(products);
+        
+           this.buyService.createBuy(products, this.totalPrice, this.userId as string, this.shippingAddress);
+         this.message = this.NotifierService.cartBuy();
+          this.cartService.clearCartDb(data._id);
+     });
+}
+
     
     clearMessage(){
       this.message = ''

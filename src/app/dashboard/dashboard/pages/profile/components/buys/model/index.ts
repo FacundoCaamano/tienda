@@ -4,7 +4,10 @@ import { Products } from "../../../../products/models";
 export interface Buy{
     _id:string,
     userId:string,
-    products:Products[],
+    products:[{
+        products:Products,
+        quantity:Number
+    }],
     address:Address,
     total:number,
     fecha:Date

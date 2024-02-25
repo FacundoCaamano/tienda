@@ -29,7 +29,7 @@
                 {{cart.product.title}}
             </h4>
             <span>{{cart.product.price | currency}}</span>
-            <button  class="btn btn-primary" [disabled]="!shippingAddress" (click)="buy(cart, cart.quantity)">Comprar este producto</button>
+            <button  class="btn btn-primary" [disabled]="!shippingAddress" (click)="(buy(cart))">Comprar este producto</button>
         </div>
     </div>
     <div >

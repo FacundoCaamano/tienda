@@ -19,7 +19,7 @@ export class BuyService {
   constructor(private http:HttpClient) { }
 
   createBuy(products:any,total:number,userId:string, address:Address ){
-    this.http.post<Buy>(this.url + '/buys/createbuy',{ products, total, userId, address})
+    this.http.post<Buy>(this.url + '/buys/createbuy',{ products, total, userId, address })
     .subscribe({
       next: (response) => {
         // Manejo de la respuesta aquí
@@ -32,7 +32,5 @@ export class BuyService {
     })
   }
 
-  createCartBuy(){
-    
-  }
+
 }
