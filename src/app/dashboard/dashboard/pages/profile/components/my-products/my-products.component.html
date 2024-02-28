@@ -1,0 +1,87 @@
+<h2>Mis productos</h2>
+<div class="productsContainer">
+    <div *ngFor="let product of products | async; let i = index" class="productsContainer--info">
+        <hr>
+        <div class="row">
+            <div class="col-md-6">Title: </div>
+            <div class="col-md-6">
+                <ng-container *ngIf="editingProductId === product._id; else displayTitle">
+                    <input type="text" [(ngModel)]="editedProduct.title">
+                </ng-container>
+                <ng-template #displayTitle>
+                    {{ product.title }}
+                </ng-template>
+            </div>
+            <div class="col-md-6">Price: </div>
+            <div class="col-md-6">
+                <ng-container *ngIf="editingProductId === product._id; else displayPrice">
+                    <input type="text" [(ngModel)]="editedProduct.price">
+                </ng-container>
+                <ng-template #displayPrice>
+                    {{ product.price | currency}}
+                </ng-template>
+                
+            </div>
+            <div class="col-md-6">Stock:</div>
+            <div class="col-md-6"> 
+                <ng-container *ngIf="editingProductId === product._id; else displayStock">
+                    <input type="text" [(ngModel)]="editedProduct.stock">
+                </ng-container>
+                <ng-template #displayStock>
+                    {{ product.stock }}
+                </ng-template>
+           
+            
+            </div>
+            <div class="col-md-6">Code:</div>
+            <div class="col-md-6">
+                <ng-container *ngIf="editingProductId === product._id; else displayCode">
+                    <input type="text" [(ngModel)]="editedProduct.code">
+                </ng-container>
+                <ng-template #displayCode>
+                    {{ product.code }}
+                </ng-template>
+       
+            </div>
+            <div class="col-md-6">Description: </div>
+            <div class="col-md-6">
+                <ng-container *ngIf="editingProductId === product._id; else displayDescription">
+                    <input type="text" [(ngModel)]="editedProduct.description">
+                </ng-container>
+                <ng-template #displayDescription>
+                    {{ product.description }}
+                </ng-template>
+              
+
+            </div>
+            <div class="col-md-6">Img:</div>
+            <div class="col-md-6">
+                <div id="carouselExampleAutoplaying{{product._id}}" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div *ngFor="let image of product.thumbnail; let i = index" class="carousel-item" [class.active]="i === 0">
+                            <img [src]="image" class="imgCarousel" alt="Product Image">
+                        </div>
+                    </div>
+                    <button *ngIf="product.thumbnail.length > 1" class="carousel-control-prev" type="button" [attr.data-bs-target]="'#carouselExampleAutoplaying' + product._id"  data-bs-slide="prev">
+                        <span class="carousel-control" aria-hidden="true"> < </span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button *ngIf="product.thumbnail.length > 1" class="carousel-control-next" type="button" [attr.data-bs-target]="'#carouselExampleAutoplaying' + product._id" data-bs-slide="next">
+                        <span class="carousel-control" aria-hidden="true">></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="productsContainer--info--buttons">
+            <button *ngIf="editingProductId == null" class="btn btn-secondary" (click)="editProduct(product)">
+               Editar
+            </button>
+            <button *ngIf="editingProductId === product._id" class="btn btn-success" (click)="saveProduct()">Guardar</button>
+            <button *ngIf="editingProductId === product._id" class="btn btn-success" (click)="clearProductEdit()">Cancelar</button>
+            <button class="btn btn-secondary" (click)="deleteProduct(product._id)">Eliminar</button>
+            <button class="btn btn-secondary" (click)="stock()">Stock</button>
+        </div>
+    </div>
+</div>

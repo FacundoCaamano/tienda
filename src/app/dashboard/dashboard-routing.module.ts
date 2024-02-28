@@ -13,6 +13,7 @@ import { BuyComponent } from './dashboard/pages/buy/buy.component';
 import { SalesComponent } from './dashboard/pages/sales/sales.component';
 import { PostComponent } from './dashboard/pages/post/post.component';
 import { AddressComponent } from './dashboard/pages/profile/components/address/address.component';
+import { MyProductsComponent } from './dashboard/pages/profile/components/my-products/my-products.component';
 
 
 
@@ -56,6 +57,10 @@ import { AddressComponent } from './dashboard/pages/profile/components/address/a
       {
         path: 'profile/address',
         component : AddressComponent
+      },
+      {
+        path: 'profile/my-products',
+        component : MyProductsComponent
       },
       {
         path: 'buy',

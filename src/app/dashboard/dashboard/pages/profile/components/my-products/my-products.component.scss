@@ -1,0 +1,35 @@
+.productsContainer{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    &--info{
+        border-radius: 10px;
+        width: 80%;
+        margin: 15px;
+        padding: 15px;
+        background-color: rgba(183, 183, 183, 0.338);
+        &--buttons{
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            align-items: center;
+            padding: 10px;
+        }
+    }
+    .carousel.slide{
+        width: 150px;
+        .imgCarousel{
+            height: 100px;
+            width: 100%;
+            border-radius: 10px;
+            object-fit:cover;
+        }
+    }
+}
+.carousel-control{
+    color: black;
+    font-size: 2rem;
+    font-weight: 700;
+}

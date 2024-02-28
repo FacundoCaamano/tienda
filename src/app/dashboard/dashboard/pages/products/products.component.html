@@ -15,7 +15,7 @@
   </div>
   <div class="card-productContainer">
     <div *ngFor="let product of products$ | async" class="card mb-3  card-product">
-      <div class="row g-0">
+      <div class="row g-0" *ngIf="product.stock > 0">
         <div class="col-md-4 " routerLink="detail/{{product._id}}">
           <img src="{{product.thumbnail[0]}}" class="img-fluid rounded-start imgProduct" alt="imgProduct">
         </div>

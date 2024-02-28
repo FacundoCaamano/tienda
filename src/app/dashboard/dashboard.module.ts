@@ -18,6 +18,7 @@ import { BuyComponent } from './dashboard/pages/buy/buy.component';
 import { SalesComponent } from './dashboard/pages/sales/sales.component';
 import { PostComponent } from './dashboard/pages/post/post.component';
 import { AddressComponent } from './dashboard/pages/profile/components/address/address.component';
+import { MyProductsComponent } from './dashboard/pages/profile/components/my-products/my-products.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { AddressComponent } from './dashboard/pages/profile/components/address/a
     BuyComponent,
     SalesComponent,
     PostComponent,
-    AddressComponent
+    AddressComponent,
+    MyProductsComponent
   ],
   imports: [
     CommonModule,
