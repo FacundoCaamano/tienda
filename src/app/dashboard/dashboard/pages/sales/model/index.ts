@@ -5,7 +5,11 @@ export interface Sales {
     _id: string,
     sellerId:string,
     buyerId:string,
-    products: Array<Products>,
+    products: [
+        productId:any,
+        quantity:any
+    ],
+    total:number,
     address:Address,
     date: Date
 }

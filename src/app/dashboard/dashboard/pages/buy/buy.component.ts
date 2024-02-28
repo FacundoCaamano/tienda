@@ -8,6 +8,7 @@ import { Products } from '../products/models';
 import { BuyService } from './service/buy.service';
 import { NotifierService } from 'src/app/core/service/notifier.service';
 import { Address } from 'src/app/auth/models';
+import { SalesService } from '../sales/service/sales.service';
 
 @Component({
   selector: 'app-buy',
@@ -17,17 +18,18 @@ import { Address } from 'src/app/auth/models';
 export class BuyComponent {
   cartToBuy$!: Observable<Cart>
   userId!: string | undefined
-  totalPrice: number = 0; 
-  total:any
+  totalPrice: number = 0;
+  total: any
   message = ''
-  addresses!:Observable<Array<Address>>
-  shippingAddress!:Address
+  addresses!: Observable<Array<Address>>
+  shippingAddress!: Address
   constructor(
     private cartService: CartService,
     private router: Router,
     private authService: AuthService,
     private buyService: BuyService,
-    private NotifierService:NotifierService
+    private NotifierService: NotifierService,
+    private salesService: SalesService
   ) {
     this.cartToBuy$ = this.cartService.setProductsToBuys$
 
@@ -40,7 +42,7 @@ export class BuyComponent {
     })
 
     this.cartToBuy$.pipe(take(1)).subscribe({
-      next : data =>{
+      next: data => {
         this.totalPrice = data.products.reduce((total, product) => total + product.product.price, 0)
       }
     })
@@ -50,42 +52,48 @@ export class BuyComponent {
         this.userId = data?.id
       }
     )
-      this.authService.loadAddresses()
-      this.addresses = this.authService.getAddresses()
+    this.authService.loadAddresses()
+    this.addresses = this.authService.getAddresses()
   }
 
-  buy(product: any)  {
+  buy(product: any) {
+    console.log(product.product.sellerId);
+    console.log(product);
     
-  console.log(product.product._id);
-  console.log(product.quantity);
-  const productInfo = [{ productId: product.product._id, quantity: product.quantity}]
     
+
+    const productInfo = [{ productId: product.product._id, quantity: product.quantity }]
+
      this.buyService.createBuy(productInfo, this.totalPrice, this.userId as string, this.shippingAddress);
-      this.cartToBuy$.pipe(take(1)).subscribe(data =>{
-          this.cartService.deleteProductFromCart(data._id, product.product._id);
-      });
-      this.message = this.NotifierService.buy();
-}
-
-buyCart(){
-     this.cartToBuy$.pipe(take(1)).subscribe(data =>{
-         const products = data.products.map(product => ({ productId: product.product._id, quantity: product.quantity }));
-        console.log(products);
-        
-           this.buyService.createBuy(products, this.totalPrice, this.userId as string, this.shippingAddress);
-         this.message = this.NotifierService.cartBuy();
-          this.cartService.clearCartDb(data._id);
+     this.cartToBuy$.pipe(take(1)).subscribe(data => {
+       this.cartService.deleteProductFromCart(data._id, product.product._id);
      });
-}
-
-    
-    clearMessage(){
-      this.message = ''
-      this.NotifierService.clearMessage()
-      this.router.navigate(['/dashboard/buys'])
-    }
-
-    setAddress(address:Address){
-      this.shippingAddress = address
-    }
+    this.salesService.createSale(product.product.sellerId, this.userId as string , productInfo,this.totalPrice, this.shippingAddress)
+    this.message = this.NotifierService.buy();
   }
+
+  buyCart() {
+    this.cartToBuy$.pipe(take(1)).subscribe(data => {
+      const products = data.products.map(product => ({ productId: product.product._id, quantity: product.quantity }));
+      console.log(products);
+
+      this.buyService.createBuy(products, this.totalPrice, this.userId as string, this.shippingAddress);
+      data.products.forEach(product => {
+        this.salesService.createSale(product.product.sellerId, this.userId as string, products,product.product.price,this.shippingAddress)
+      })
+      this.message = this.NotifierService.cartBuy();
+      this.cartService.clearCartDb(data._id);
+    });
+  }
+
+
+  clearMessage() {
+    this.message = ''
+    this.NotifierService.clearMessage()
+    this.router.navigate(['/dashboard/buys'])
+  }
+
+  setAddress(address: Address) {
+    this.shippingAddress = address
+  }
+}

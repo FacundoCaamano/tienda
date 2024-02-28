@@ -1,17 +1,25 @@
-<p>ventas</p>
 <button class="btn btn-secondary" routerLink="../">
     volver
 </button>
-<div *ngFor="let sale of sales" class="buys-container">
+<div *ngFor="let sale of sales | async" class="buys-container">
     <ul class="list-group">
         <li>Vendido a {{sale.buyerId}} </li>
-        <li>codigo:</li>
-        <li>total: </li>
-        <li>fecha: {{sales.date}}</li>
+        <li>total: {{sale.total | currency}}</li>
+        <li>fecha: {{sale.date}} </li>
+        <hr>
+        <h5>Direccion</h5>
+        <ul>
+            <li>{{sale.address.city}}</li>
+            <li>{{sale.address.num}}</li>
+            <li>{{sale.address.postalCode}}</li>
+            <li>{{sale.address.province}}</li>
+            <li>{{sale.address.street}}</li>
+        </ul>
+        <hr>
         <span>items:</span>
         <ul>
             <li *ngFor="let product of sale.products">
-                Producto: {{ product.product }} - Cantidad: {{ product.quantity }}
+                 Producto: {{ product.productId }} - Cantidad: {{ product.quantity}} 
             </li>
             <li class="list-group-item">Fecha: {{ sale.date | date }}</li>
         </ul>
