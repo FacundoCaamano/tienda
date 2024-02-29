@@ -45,3 +45,9 @@
 .btn-continuar:hover{
     transform: scale(1.1);
 }
+
+@media screen and (max-width:800px) {
+    .login-container{
+      padding: 20px;
+    }
+}

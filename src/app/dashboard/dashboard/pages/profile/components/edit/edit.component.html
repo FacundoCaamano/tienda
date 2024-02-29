@@ -1,30 +1,28 @@
-<pre>
-    {{user?.id | json}} 
-</pre>
+
 <form [formGroup]="formUser" (ngSubmit)="onSubmit()">
     <div>
-        <label class="form-label">Name</label>
+        <label class="form-label">Nombre</label>
         <input formControlName="name" class="form-control" type="text">
         <div>
             <p *ngIf="controlName.invalid && controlName.touched">campo necesario</p>
         </div>
     </div>
     <div>
-        <label class="form-label">Surname</label>
+        <label class="form-label">Apellido</label>
         <input formControlName="surname" class="form-control" type="text">
         <div>
             <p *ngIf="controlSurname.invalid && controlSurname.touched">campo necesario</p>
         </div>
     </div>
     <div>
-        <label class="form-label">email</label>
+        <label class="form-label">Email</label>
         <input  formControlName='email' class="form-control" type="text">
         <div>
             <p *ngIf="controlEmail.invalid && controlEmail.touched">campo necesario</p>
         </div>
     </div>
     <div>
-        <label class="form-label">role</label>
+        <label class="form-label">Rol</label>
         <select class="form-select" name="role" formControlName="role" id="">
             <option value="seller" [selected]="user?.role === 'seller'">seller</option>
             <option value="user" [selected]="user?.role === 'user'">user</option>

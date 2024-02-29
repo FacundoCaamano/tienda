@@ -58,9 +58,5 @@ export class MyProductsComponent implements OnInit {
       )
     this.editingProductId = null; // Desactivar el modo de edición
   }
-  
-  stock(){
-    console.log('stock');
-    
-  }
+
 }

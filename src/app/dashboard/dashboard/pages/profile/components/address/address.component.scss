@@ -39,4 +39,16 @@ button[type="submit"] {
     -webkit-text-stroke-width: 0.4px;
     -webkit-text-stroke-color: black;
 }
+.card{
+    width: 10rem
+}
 
+@media screen and (max-width:800px) {
+     .addresses{
+        .row{
+           .card{
+            width: 100%;
+           }
+        }
+     }
+}

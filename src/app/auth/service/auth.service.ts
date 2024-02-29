@@ -65,14 +65,14 @@ export class AuthService {
   }
 
   editUser(id: string, data: any) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: localStorage.getItem('token')!
-      })
-    };
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     Authorization: localStorage.getItem('token')!
+    //   })
+    // };
 
     this.http
-      .put(`${this.URL}/users/edituser/${id}`, data, httpOptions)
+      .put(`${this.URL}/users/edituser/${id}`, data)
       .subscribe({
         next: (res: any) => {
           // Actualiza el observable _user$ con los nuevos datos

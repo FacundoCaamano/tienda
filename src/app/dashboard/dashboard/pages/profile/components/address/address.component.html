@@ -3,11 +3,12 @@
       {{message}}
   </div>
 </div>
+<button class="btn btn-secondary" routerLink="../">volver</button>
 <h3>Direcciones</h3>
-<div class="container text-center">
+<div class="container text-center addresses">
   <div class="row">
     <div class="col-md-6 p-1" *ngFor="let address of addresses | async">
-      <div class="card" style="width: 10rem;">
+      <div class="card">
         <div class="card-body">
           <p class="card-text">{{ address.street }}</p>
           <p class="card-text">{{ address.city }}</p>

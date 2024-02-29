@@ -12,6 +12,7 @@
     width: 100vw;
     height: 100vh;
     position: fixed;
+    z-index: 10;
     top: 1px;
     left: 0px;
     background-color: rgba(128, 128, 128, 0.9);
@@ -19,7 +20,7 @@
         background-color: var(--backNoti);
         color: var(--color2);
         position: absolute;
-        z-index: 2;
+        z-index: 11;
         top: 40vh;
         left: 20vw;
         width: 60vw;

@@ -64,11 +64,13 @@ import { MyProductsComponent } from './dashboard/pages/profile/components/my-pro
       },
       {
         path: 'buy',
+        canActivate:[authGuard],
         component: BuyComponent
       },
       {
-
+        
         path: 'buys',
+        canActivate:[authGuard],
         component: BuysComponent
       },
       {

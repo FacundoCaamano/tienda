@@ -28,8 +28,10 @@
                 </p>
                 <div class="buttonsContainer">
                     <input [readOnly]="true" type="number" value={{quantity}} class="inputQuantity">
-                    <button class="btn-agregar quantity" (click)="increaseQuantity()">+</button>
-                    <button class="btn-agregar quantity" (click)="decreaseQuantity()">-</button>
+                    <div>
+                        <button class="btn-agregar quantity" (click)="increaseQuantity()">+</button>
+                        <button class="btn-agregar quantity" (click)="decreaseQuantity()">-</button>
+                    </div>
                     <div class="buttonsContainer--agregar">
                         <p class="messageLogin" *ngIf="!user">necesita iniciar sesion</p>
                         <button class="btn-agregar" [ngClass]="{'desactive': user == false}"  [disabled]="!user"  (click)="addToCart(productId)">agregar al carrito</button>

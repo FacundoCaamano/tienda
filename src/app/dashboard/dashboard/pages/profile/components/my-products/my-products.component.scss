@@ -33,3 +33,14 @@
     font-size: 2rem;
     font-weight: 700;
 }
+@media screen and (max-width:800px ) {
+    .productsContainer{
+        padding: 0;
+        &--info{
+            width: 100%;
+            &--buttons{
+                flex-wrap: wrap;
+            }
+        }
+    }
+}

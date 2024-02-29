@@ -46,3 +46,23 @@
  object-fit: cover;
  height: 100%;
 }
+@media screen and (max-width:800px) {
+    .containerProducts{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90vw;
+        .card-filtersContainer{
+           width: 70%;
+        }
+    }
+    .card-productContainer{  
+        align-items: center;
+        .imgProduct{
+            width: 100%;
+        }
+    }
+    .card-product{
+        width: 100%;
+    }
+}

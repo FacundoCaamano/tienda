@@ -16,7 +16,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
 }
 .content{
     width: 50vw;
@@ -24,4 +23,14 @@
 .container-footer {
     height: 100px;
     background: var(--color4);
+}
+
+@media screen and (max-width:800px) {
+    .container--content{
+        padding: 5px;
+       
+    }
+    .content{
+        width: 95vw;
+    }
 }

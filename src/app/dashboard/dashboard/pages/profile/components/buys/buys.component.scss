@@ -23,3 +23,9 @@ li{
     list-style: none
 }
 
+@media screen and (max-width:800px) {
+    .list-group{
+        width: 95vw;
+        padding: 10px;
+    }
+}
