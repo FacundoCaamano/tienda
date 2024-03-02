@@ -28,6 +28,7 @@ export class DashboardComponent {
         }
         )
         this.cartService.loadCart(this.id)    
+        this.authService.loadAddresses()
       }
     }
     

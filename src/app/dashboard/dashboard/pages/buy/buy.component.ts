@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart/service/cart.service';
 import { Observable, take } from 'rxjs';
 import { Cart } from '../cart/model';
@@ -15,7 +15,7 @@ import { SalesService } from '../sales/service/sales.service';
   templateUrl: './buy.component.html',
   styleUrls: ['./buy.component.scss']
 })
-export class BuyComponent {
+export class BuyComponent implements OnInit {
   cartToBuy$!: Observable<Cart>
   userId!: string | undefined
   totalPrice: number = 0;
@@ -37,31 +37,26 @@ export class BuyComponent {
       next: (data) => {
         if (!data.products) {
           this.router.navigate(['dashboard/profile/cart'])
+        }else{
+
+          this.totalPrice = data.products.reduce((total, product) => total + product.product.price, 0)
         }
       }
     })
 
-    this.cartToBuy$.pipe(take(1)).subscribe({
-      next: data => {
-        this.totalPrice = data.products.reduce((total, product) => total + product.product.price, 0)
-      }
-    })
+    
 
     this.authService.user$.subscribe(
       data => {
         this.userId = data?.id
       }
     )
-    this.authService.loadAddresses()
+  }
+  ngOnInit(): void {
     this.addresses = this.authService.getAddresses()
   }
 
   buy(product: any) {
-    console.log(product.product.sellerId);
-    console.log(product);
-    
-    
-
     const productInfo = [{ productId: product.product._id, quantity: product.quantity }]
 
      this.buyService.createBuy(productInfo, this.totalPrice, this.userId as string, this.shippingAddress);

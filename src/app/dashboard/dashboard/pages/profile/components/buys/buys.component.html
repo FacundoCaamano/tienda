@@ -12,18 +12,26 @@
         <li>Provincia : {{buys.address.province}}</li>
         <li>Codigo postal : {{buys.address.postalCode}}</li>
         <hr>
-        <li>estado:</li>
-        <li>total: {{buys.total}}</li>
+        <li>estado: Pendiente...</li>
+        <li>Precio final: {{buys.total | currency}}</li>
         <li>fecha: {{buys.fecha}}</li>
-        <li class="products-container">items:
+    
+        <hr>
+        <li class="products-container">
             <ul *ngFor="let product of buys.products">
                 <li >
                    {{product.productId.title}}
                </li>
-               <li>cantidad: {{product.quantity}}</li>
+               <li>Precio por Unidad : {{product.productId.price | currency}}</li>
+               <li>cantidad: {{product.quantity }}</li>
+               <li *ngIf="product.quantity > 1">
+                    total: {{product.quantity * product.productId.price | currency}}
+                </li>
                <img class="width-img-buy" src={{product.productId.thumbnail[0]}} alt=""> 
+               <hr>
            </ul>
         </li>
+        <hr>
     </ul>
 </div>
 <div *ngIf="!products.buys && isLoading">

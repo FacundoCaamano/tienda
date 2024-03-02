@@ -24,6 +24,7 @@ export class AddressComponent implements OnInit {
     private notifierService:NotifierService
   ) {
     
+    
   }
   
   ngOnInit(): void {
@@ -40,13 +41,14 @@ export class AddressComponent implements OnInit {
         if(data){  
           this.userId = data.id;
           // Solo cargamos las direcciones una vez al iniciar el componente
-          this.authService.loadAddresses();
+         
           // Obtenemos las direcciones, pero no necesitamos volver a cargarlas más tarde
           this.addresses = this.authService.getAddresses();
           console.log(this.addresses);
         }
       }
     );
+    console.log(this.addresses);
   }
 
   onSubmit(): void {

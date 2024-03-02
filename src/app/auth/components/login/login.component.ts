@@ -14,8 +14,8 @@ export class LoginComponent {
     this.errorMesages$ = this.authService.errorMessages$
   }
 
-  controlEmail = new FormControl<string | null>('', Validators.required)
-  controlPassword = new FormControl<string | null>('', Validators.required)
+  controlEmail = new FormControl<string | null>('UsuarioDePrueba@gmail.com', Validators.required)
+  controlPassword = new FormControl<string | null>('UsuarioDePrueba', Validators.required)
 
   formLogin = new FormGroup({
     email:this.controlEmail,

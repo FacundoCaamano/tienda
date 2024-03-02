@@ -1,3 +1,3 @@
 export const environment = {
-    api: 'http://localhost:3000/carrito-pro'
+    api: import.meta.env.NG_APP_API_URL
 };
