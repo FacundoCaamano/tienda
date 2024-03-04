@@ -29,7 +29,6 @@ export class SalesComponent implements OnInit{
 
     obtenerSales(){
      this.sales = this.saleService.getSales() 
-     console.log(this.sales);
      
     }
 }

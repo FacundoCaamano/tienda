@@ -17,22 +17,22 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" routerLink="home">Inicio</a>
+              <a  class="nav-link" aria-current="page" routerLink="home" [attr.data-bs-dismiss]="viewPort ? 'offcanvas' : ''" >Inicio</a>
             </li>
             <li class="nav-item" *ngIf="!(user$ | async)">
-              <a class="nav-link"  data-bs-toggle="modal" data-bs-target="#exampleModal">perfil</a> 
+              <a class="nav-link"  data-bs-toggle="modal" data-bs-target="#exampleModal" [attr.data-bs-dismiss]="viewPort ? 'offcanvas' : ''">perfil</a> 
             </li>
             <li class="nav-item" *ngIf="(user$ | async)">
-              <a  class="nav-link"  routerLink="profile">perfil</a>
+              <a  class="nav-link"  routerLink="profile" [attr.data-bs-dismiss]="viewPort ? 'offcanvas' : ''">perfil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="products">productos</a>
+              <a class="nav-link" routerLink="products" [attr.data-bs-dismiss]="viewPort ? 'offcanvas' : ''">productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="buys">compras</a>
+              <a class="nav-link" routerLink="buys" [attr.data-bs-dismiss]="viewPort ? 'offcanvas' : ''">compras</a>
             </li>
             <li *ngIf="(user$ |async)?.role === 'seller'">
-              <a class="nav-link" routerLink="profile/post">publicar producto</a>
+              <a class="nav-link" routerLink="profile/post" [attr.data-bs-dismiss]="viewPort ? 'offcanvas' : ''">publicar producto</a>
             </li>
           </ul>
         </div>

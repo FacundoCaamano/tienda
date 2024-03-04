@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { user } from '../../models';
 import { AuthService } from '../../service/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  constructor(private authService:AuthService){}
+  loader:Observable<boolean>
+  constructor(private authService:AuthService){
+    this.loader = this.authService._isLoading$
+  }
 
   controlName = new FormControl<string | null>('',Validators.required)
   controlSurname = new FormControl<string | null>('', Validators.required)
@@ -28,6 +32,7 @@ export class RegisterComponent {
       this.formRegister.markAllAsTouched()
     }
     else{
+      this.authService._isLoading$.next(true)
       const data = {
         name: this.controlName.value as string,
         surname: this.controlSurname.value as string,

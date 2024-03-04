@@ -70,8 +70,6 @@ export class BuyComponent implements OnInit {
   buyCart() {
     this.cartToBuy$.pipe(take(1)).subscribe(data => {
       const products = data.products.map(product => ({ productId: product.product._id, quantity: product.quantity }));
-      console.log(products);
-
       this.buyService.createBuy(products, this.totalPrice, this.userId as string, this.shippingAddress);
       data.products.forEach(product => {
         this.salesService.createSale(product.product.sellerId, this.userId as string, products,product.product.price,this.shippingAddress)

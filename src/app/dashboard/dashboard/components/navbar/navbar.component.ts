@@ -12,6 +12,8 @@ import { CartService } from '../../pages/cart/service/cart.service';
 })
 export class NavbarComponent implements OnInit {
   public user$!:Observable<userData | null>
+
+  viewPort = window.innerWidth < 768 ? true : false
   constructor(private authService:AuthService, private cartService:CartService) {
   }
   ngOnInit(): void {

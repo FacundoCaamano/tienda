@@ -1,3 +1,4 @@
+<h4>Utilice información ficticia</h4>
 <div class="formRegisterContainer">
     <form class="formRegister"  (submit)="register()" [formGroup]="formRegister">
         <div class="mb-3">
@@ -34,3 +35,6 @@
         </div>
     </form>
 </div>
+<div *ngIf="loader | async" class="loadContainer">
+    <span  class="loader"></span>
+  </div>

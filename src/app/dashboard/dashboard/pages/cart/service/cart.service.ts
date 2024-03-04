@@ -20,6 +20,8 @@ export class CartService {
   private _setProductsToBuy$ = new BehaviorSubject<any>([])
   public  setProductsToBuys$ = this._setProductsToBuy$.asObservable()
 
+  public loader = new BehaviorSubject<boolean>(false)
+
   constructor(private http:HttpClient) { }
 
   loadCart(id:string){
@@ -44,6 +46,7 @@ export class CartService {
     this.http.post(this.url + '/carts/' + cartId + '/product/' + productId , {quantity}).subscribe({
       next:(data)=>{
         this.loadCart(cartId)
+        this.loader.next(false)
       }
     })
     

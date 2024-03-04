@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +9,10 @@ import { AuthService } from '../../service/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-
+  loader:Observable<boolean>
   errorMesages$
   constructor(private authService:AuthService){
+    this.loader = this.authService._isLoading$
     this.errorMesages$ = this.authService.errorMessages$
   }
 
@@ -24,6 +26,7 @@ export class LoginComponent {
 
   login(){
     if(this.formLogin.valid){
+      this.authService._isLoading$.next(true)
        this.authService.login(this.controlEmail.value as string, this.controlPassword.value as string)
     }
     if(this.formLogin.invalid){

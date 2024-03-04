@@ -20,6 +20,8 @@ export class AuthService {
   private _address$ = new BehaviorSubject<Address[]>([]);
   public address$ = this._address$.asObservable();
 
+  public _isLoading$ = new BehaviorSubject<boolean>(false) 
+
   constructor(private http: HttpClient, private router: Router) {}
 
   login(email: string, password: string) {
@@ -54,6 +56,7 @@ export class AuthService {
     this.http.post(this.URL + '/users', userData).subscribe(
       res => {
         this.router.navigate(['/auth/login']);
+        this._isLoading$.next(false)
       }
     );
   }

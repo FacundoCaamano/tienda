@@ -23,16 +23,17 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   user:any
 
+  isLoading!:Observable<boolean>
+
   private suscription!: Subscription
 
   constructor(
     private produductService:ProductsService,
-    private router:Router, 
     private activatedRoute:ActivatedRoute, 
     private authService:AuthService,
     private cartService:CartService
     ) {
-
+    this.isLoading = this.cartService.loader
     this.productId = this.activatedRoute.snapshot.params['id']
     this.product = this.produductService.getProductId(this.productId)
     this.authService.user$.pipe(take(1)).subscribe( user =>{
@@ -65,6 +66,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   addToCart(productId:string){
+    this.cartService.loader.next(true)
     this.cartService.addProductToCart(productId, this.cart, this.quantity)
   }
 
@@ -74,4 +76,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   decreaseQuantity(){
     this.quantity --
   }
+
+  
 }

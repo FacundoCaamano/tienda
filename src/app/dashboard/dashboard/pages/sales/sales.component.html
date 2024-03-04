@@ -25,3 +25,6 @@
         </ul>
     </ul>
 </div>
+<div *ngIf="(sales | async)?.length == 0">
+    <p>No se registraron ventas</p>
+</div>
