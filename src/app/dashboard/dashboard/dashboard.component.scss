@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: space-between;
     min-height: 100vh;
+    overflow-y: scroll;
 }
 
 .container-navbar {
@@ -20,6 +21,7 @@
 }
 .content{
     width: 50vw;
+    overflow-y: scroll;
 }
 .container-footer {
     height: 100px;
