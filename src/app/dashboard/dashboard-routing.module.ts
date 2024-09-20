@@ -40,6 +40,7 @@ import { MyProductsComponent } from './dashboard/pages/profile/components/my-pro
       },
       {
         path: 'profile/buys',
+        canActivate:[authGuard],
         component: BuysComponent
       },
       {
@@ -61,11 +62,6 @@ import { MyProductsComponent } from './dashboard/pages/profile/components/my-pro
       {
         path: 'profile/my-products',
         component : MyProductsComponent
-      },
-      {
-        path: 'buy',
-        canActivate:[authGuard],
-        component: BuyComponent
       },
       {
         

@@ -29,7 +29,7 @@
               <a class="nav-link" routerLink="products" [attr.data-bs-dismiss]="viewPort ? 'offcanvas' : ''">productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="buys" [attr.data-bs-dismiss]="viewPort ? 'offcanvas' : ''">compras</a>
+              <a class="nav-link" routerLink="profile/buys" [attr.data-bs-dismiss]="viewPort ? 'offcanvas' : ''">compras</a>
             </li>
             <li *ngIf="(user$ |async)?.role === 'seller'">
               <a class="nav-link" routerLink="profile/post" [attr.data-bs-dismiss]="viewPort ? 'offcanvas' : ''">publicar producto</a>
