@@ -63,8 +63,8 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
-    this.router.navigate(['/auth/login']);
     this._user$.next(null);
+    this.router.navigate(['/auth/login']);
   }
 
   editUser(id: string, data: any) {
