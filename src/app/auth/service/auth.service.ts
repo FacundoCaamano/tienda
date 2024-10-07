@@ -45,6 +45,9 @@ export class AuthService {
     if (token) {
       this._user$.next(JSON.parse(atob(token.split('.')[1])));
     }
+    if(!token){
+      this._user$.next(null)
+    }
   }
 
   isAuthenticated() {
@@ -65,6 +68,7 @@ export class AuthService {
     localStorage.removeItem('token');
     this._user$.next(null);
     this.router.navigate(['/auth/login']);
+    this._isLoading$.next(false)
   }
 
   editUser(id: string, data: any) {
